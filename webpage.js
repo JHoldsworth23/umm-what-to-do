@@ -36,3 +36,11 @@ const createFooter = () => {
         </a>
     `;
 }
+
+const loadWebpage = () => {
+    createMainComponent();
+    createHeader();
+    createFooter();
+}
+
+loadWebpage();
