@@ -16,4 +16,23 @@ const createMainComponent = () => {
     content.appendChild(footer);
 }
 
-createMainComponent();
+const createHeader = () => {
+    const header = document.querySelector('header');
+    const title = document.createElement('h1');
+
+    title.textContent = 'Umm What To Do?';
+
+    header.appendChild(title);
+}
+
+const createFooter = () => {
+    const footer = document.querySelector('footer');
+    
+    const date = new Date();
+    footer.innerHTML = `
+        <p>Copyright ©️ 2024 JHoldsworth23</p>
+        <a href="https://github.com/JHoldsworth23" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+        </a>
+    `;
+}
