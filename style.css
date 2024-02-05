@@ -19,8 +19,9 @@ header {
     padding: 0 20px;
 }
 
-.home > h2 {
-    margin: 30px 12px 8px;
+.home > h2, .projects > h2 {
+    font-size: 1.6rem;
+    margin: 20px 12px 8px;
 }
 
 .panel {
@@ -28,6 +29,23 @@ header {
     justify-content: flex-start;
     align-items: center;
     gap: 16px;
+    padding: 0 20px;
+}
+
+.panel:hover {
+    background-color: #0C0A00;
+    color: #FEFEFE;
+}
+
+.panel > p {
+    font-size: 1.25rem;
+    margin: 10px 0;
+}
+
+.project-options {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
 }
 
 .right-panel {
