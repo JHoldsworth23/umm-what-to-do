@@ -1,8 +1,11 @@
+let defaultProjects = [];
 
 class Project {
-    constructor(projectId, projectName) {
-        this.id = projectId;
+    constructor(projectName) {
         this.name = projectName;
         this.taskList = [];
     }
 }
+
+defaultProjects.push(new Project('Gym'));
+defaultProjects.push(new Project('Study'));
