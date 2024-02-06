@@ -1,5 +1,6 @@
 const createProjectForm = () => {
     const projectDiv = document.querySelector('.projects');
+    const addNewBtn = document.querySelector('#add-new-project');
     const form = document.createElement('form');
     form.id = 'project-form';
     form.autocomplete = 'off';
@@ -17,7 +18,7 @@ const createProjectForm = () => {
     `;
 
     form.appendChild(inputDiv);
-    projectDiv.appendChild(form);
+    projectDiv.insertBefore(form, addNewBtn);
 }
 
 const createTaskForm = () => {
