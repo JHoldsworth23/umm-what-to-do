@@ -68,7 +68,7 @@ const createFooter = () => {
     
     const date = new Date();
     footer.innerHTML = `
-        <p>Copyright ©️ 2024 JHoldsworth23</p>
+        <p>Copyright ©️ ${date.getFullYear()} JHoldsworth23</p>
         <a href="https://github.com/JHoldsworth23" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-github"></i>
         </a>
