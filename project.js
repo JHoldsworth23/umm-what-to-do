@@ -14,10 +14,11 @@ const displayProject = (projectArray) => {
     projectArray.forEach(project => {
         addProject(project.name);
     });
+    projectFormButton();
 }
 
 const addProject = (projectInput) => {
-    const project = document.querySelector('.left-panel');
+    const project = document.querySelector('.projects');
     
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('panel');
@@ -43,6 +44,14 @@ const addProject = (projectInput) => {
     projectContainer.appendChild(editProjectDiv);
 
     project.appendChild(projectContainer);
+}
+
+const projectFormButton = () => {
+    const projectDiv = document.querySelector('.projects');
+    const projectFormButton = document.createElement('button');
+    projectFormButton.id = 'add-new-project';
+    projectFormButton.textContent = 'Add a New Project';
+    projectDiv.appendChild(projectFormButton);
 }
 
 displayProject(defaultProjects);
