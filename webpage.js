@@ -25,11 +25,15 @@ const createHeader = () => {
     header.appendChild(title);
 }
 
-const createHomeProjects = () => {
+const createProjectsDiv = () => {
     const sidebar = document.querySelector('.left-panel');
     const homeProjects = document.createElement('div');
     homeProjects.classList.add('home');
     homeProjects.innerHTML = '<h2>Home</h2>'
+
+    const projectDiv = document.createElement('div');
+    projectDiv.classList.add('projects');
+    projectDiv.innerHTML = '<h2>Projects</h2>';
 
     const allTasksDiv = document.createElement('div');
     allTasksDiv.classList.add('panel');
@@ -56,6 +60,7 @@ const createHomeProjects = () => {
     homeProjects.appendChild(highPriorityTasksDiv);
 
     sidebar.appendChild(homeProjects);
+    sidebar.appendChild(projectDiv);
 }
 
 const createFooter = () => {
@@ -73,7 +78,7 @@ const createFooter = () => {
 const loadWebpage = () => {
     createMainComponent();
     createHeader();
-    createHomeProjects();
+    createProjectsDiv();
     createFooter();
 }
 
