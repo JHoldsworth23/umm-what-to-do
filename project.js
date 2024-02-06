@@ -50,7 +50,7 @@ const projectFormButton = () => {
     const projectDiv = document.querySelector('.projects');
     const projectFormButton = document.createElement('button');
     projectFormButton.id = 'add-new-project';
-    projectFormButton.textContent = 'Add a New Project';
+    projectFormButton.innerHTML = '<i class="fa-solid fa-file-circle-plus"></i> Add a New Project';
     projectDiv.appendChild(projectFormButton);
 }
 
