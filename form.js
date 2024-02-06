@@ -3,6 +3,7 @@ const createProjectForm = () => {
     const form = document.createElement('form');
     form.id = 'project-form';
     form.autocomplete = 'off';
+    form.classList.add('hidden');
 
     const inputDiv = document.createElement('div');
     inputDiv.classList.add('project-inputs');
