@@ -10,6 +10,11 @@ class Project {
 defaultProjects.push(new Project('Gym'));
 defaultProjects.push(new Project('Study'));
 
+const createEventListener = () => {
+    const addProjectBtn = document.querySelector('#add-new-project');
+    addProjectBtn.addEventListener('click', showProjectForm);
+}
+
 const displayProject = (projectArray) => {
     projectArray.forEach(project => {
         addProject(project.name);
@@ -54,4 +59,11 @@ const projectFormButton = () => {
     projectDiv.appendChild(projectFormButton);
 }
 
+const showProjectForm = () => {
+    const projectForm = document.querySelector('#project-form');
+    projectForm.classList.remove('hidden');
+    document.querySelector('.project-inputs').focus();
+}
+
 displayProject(defaultProjects);
+createEventListener();
