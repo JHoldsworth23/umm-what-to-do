@@ -13,6 +13,9 @@ defaultProjects.push(new Project('Study'));
 const createEventListener = () => {
     const addProjectBtn = document.querySelector('#add-new-project');
     addProjectBtn.addEventListener('click', showProjectForm);
+
+    const cancelFormBtn = document.querySelector('.cancel-btn');
+    cancelFormBtn.addEventListener('click', hideProjectForm);
 }
 
 const displayProject = (projectArray) => {
@@ -63,6 +66,13 @@ const showProjectForm = () => {
     const projectForm = document.querySelector('#project-form');
     projectForm.classList.remove('hidden');
     document.querySelector('.project-inputs').focus();
+}
+
+const hideProjectForm = () => {
+    const projectForm = document.querySelector('#project-form');
+    const projectInputs = document.querySelector('.project-inputs');
+    projectInputs.value = '';
+    projectForm.classList.add('hidden');
 }
 
 displayProject(defaultProjects);
