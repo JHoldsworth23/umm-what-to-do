@@ -11,8 +11,13 @@ defaultProjects.push(new Project('Gym'));
 defaultProjects.push(new Project('Study'));
 
 const createEventListener = () => {
+    displayProject(defaultProjects);
+
     const addProjectBtn = document.querySelector('#add-new-project');
     addProjectBtn.addEventListener('click', showProjectForm);
+
+    const submitFormBtn = document.querySelector('.submit-btn');
+    submitFormBtn.addEventListener('click', processNewProject);
 
     const cancelFormBtn = document.querySelector('.cancel-btn');
     cancelFormBtn.addEventListener('click', hideProjectForm);
@@ -75,5 +80,9 @@ const hideProjectForm = () => {
     projectForm.classList.add('hidden');
 }
 
-displayProject(defaultProjects);
+const processNewProject = (e) => {
+    e.preventDefault();
+    console.log('NEW PROJECT HAS BEEN ADDED');
+}
+
 createEventListener();
