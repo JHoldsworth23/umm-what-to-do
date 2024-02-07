@@ -55,7 +55,7 @@ const createProjectsDiv = () => {
 
     const highPriorityTasksDiv = document.createElement('div');
     highPriorityTasksDiv.classList.add('panel');
-    highPriorityTasksDiv.id = 'all-tasks';
+    highPriorityTasksDiv.id = 'high-priority';
     highPriorityTasksDiv.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i><p>High Priority Tasks</p>';
     homeProjects.appendChild(highPriorityTasksDiv);
 
