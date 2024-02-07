@@ -27,7 +27,6 @@ const displayProject = (projectArray) => {
     projectArray.forEach(project => {
         addProject(project.name);
     });
-    projectFormButton();
 }
 
 const addProject = (projectInput) => {
@@ -56,15 +55,8 @@ const addProject = (projectInput) => {
     editProjectDiv.appendChild(deleteIcon);
     projectContainer.appendChild(editProjectDiv);
 
-    project.appendChild(projectContainer);
-}
-
-const projectFormButton = () => {
-    const projectDiv = document.querySelector('.projects');
-    const projectFormButton = document.createElement('button');
-    projectFormButton.id = 'add-new-project';
-    projectFormButton.innerHTML = '<i class="fa-solid fa-file-circle-plus"></i> Add a New Project';
-    projectDiv.appendChild(projectFormButton);
+    const projectForm = document.querySelector('#project-form');
+    project.insertBefore(projectContainer, projectForm);
 }
 
 const showProjectForm = () => {
