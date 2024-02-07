@@ -11,8 +11,6 @@ defaultProjects.push(new Project('Gym'));
 defaultProjects.push(new Project('Study'));
 
 const createEventListener = () => {
-    displayProject(defaultProjects);
-
     const addProjectBtn = document.querySelector('#add-new-project');
     addProjectBtn.addEventListener('click', showProjectForm);
 
@@ -21,6 +19,8 @@ const createEventListener = () => {
 
     const cancelFormBtn = document.querySelector('.cancel-btn');
     cancelFormBtn.addEventListener('click', hideProjectForm);
+
+    displayProject(defaultProjects);
 }
 
 const displayProject = (projectArray) => {
@@ -62,19 +62,37 @@ const addProject = (projectInput) => {
 const showProjectForm = () => {
     const projectForm = document.querySelector('#project-form');
     projectForm.classList.remove('hidden');
-    document.querySelector('.project-inputs').focus();
+    document.querySelector('#new-project').focus();
 }
 
 const hideProjectForm = () => {
     const projectForm = document.querySelector('#project-form');
-    const projectInputs = document.querySelector('.project-inputs');
-    projectInputs.value = '';
+    const projectInput = document.querySelector('#new-project');
+    const errorMessage = document.querySelector('.error-message');
+
     projectForm.classList.add('hidden');
+    projectInput.value = '';
+    errorMessage.classList.add('hidden');
 }
 
 const processNewProject = (e) => {
     e.preventDefault();
-    console.log('NEW PROJECT HAS BEEN ADDED');
+
+    const textInput = document.querySelector('#new-project');
+    const errorMessage = document.querySelector('.error-message');
+    if (textInput.checkValidity()) {
+        errorMessage.classList.add('hidden');
+        textInput.classList.remove('invalid');
+
+        const projectName = textInput.value;
+        const newProject = new Project(projectName);
+        defaultProjects.push(newProject);
+        addProject(projectName);
+        hideProjectForm();    
+    } else {
+        errorMessage.classList.remove('hidden');
+        textInput.classList.add('invalid');
+    }
 }
 
 createEventListener();
