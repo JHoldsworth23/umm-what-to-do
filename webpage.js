@@ -97,10 +97,10 @@ const createProjectForm = () => {
     inputDiv.classList.add('project-inputs');
 
     inputDiv.innerHTML = `
-        <input type="text" id="new-project" placeholder="Enter a New Project Name" maxlength="20">
+        <input type="text" id="new-project" placeholder="Enter a New Project Name" maxlength="20" required>
         <div class="form-buttons">
-            <button class="submit-btn">Add</button>
-            <button class="cancel-btn">Cancel</button>
+            <input type="submit" class="submit-btn" value="Add">
+            <input type="button" class="cancel-btn" value="Cancel">
         </div>
     `;
 
