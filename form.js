@@ -21,6 +21,14 @@ const createProjectForm = () => {
     projectDiv.insertBefore(form, addNewBtn);
 }
 
+const projectFormButton = () => {
+    const projectDiv = document.querySelector('.projects');
+    const projectFormButton = document.createElement('button');
+    projectFormButton.id = 'add-new-project';
+    projectFormButton.innerHTML = '<i class="fa-solid fa-file-circle-plus"></i> Add a New Project';
+    projectDiv.appendChild(projectFormButton);
+}
+
 const createTaskForm = () => {
 
 }
