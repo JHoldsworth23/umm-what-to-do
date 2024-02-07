@@ -11,10 +11,11 @@ const createProjectForm = () => {
 
     inputDiv.innerHTML = `
         <input type="text" id="new-project" placeholder="Enter a New Project Name" maxlength="20" required>
+        <p class="error-message hidden">You need to add a title for new project!</p>
         <div class="form-buttons">
             <input type="submit" class="submit-btn" value="Add">
             <input type="button" class="cancel-btn" value="Cancel">
-        </div>  
+        </div>
     `;
 
     form.appendChild(inputDiv);
