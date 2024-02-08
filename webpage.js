@@ -64,6 +64,18 @@ const createProjectsDiv = () => {
     projectFormButton();
 }
 
+const createTaskDiv = () => {
+    const rightPanel = document.querySelector('.right-panel');
+    const currentProjectTitle = document.createElement('div');
+    currentProjectTitle.innerHTML = '<h1 class="project-title">All Tasks</h1>';
+
+    const todoList = document.createElement('div');
+    todoList.classList.add('todo-list');
+
+    rightPanel.appendChild(currentProjectTitle);
+    rightPanel.appendChild(todoList);
+}
+
 const createFooter = () => {
     const footer = document.querySelector('footer');
     
@@ -115,6 +127,7 @@ const loadWebpage = () => {
     createHeader();
     createProjectsDiv();
     createProjectForm();
+    createTaskDiv();
     createFooter();
 }
 
