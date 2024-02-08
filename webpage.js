@@ -120,6 +120,14 @@ const createProjectForm = () => {
     form.appendChild(inputDiv);
     projectDiv.insertBefore(form, addNewBtn);
 }
+
+const taskFormButton = () => {
+    const taskDiv = document.querySelector('.right-panel');
+    const taskFormButton = document.createElement('button');
+    taskFormButton.id = 'add-new-task';
+    taskFormButton.innerHTML = '<i class="fa-solid fa-plus"></i> Add a New Task';
+    taskDiv.appendChild(taskFormButton);
+}
 // 
 
 const loadWebpage = () => {
@@ -128,6 +136,7 @@ const loadWebpage = () => {
     createProjectsDiv();
     createProjectForm();
     createTaskDiv();
+    taskFormButton();
     createFooter();
 }
 
