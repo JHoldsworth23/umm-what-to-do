@@ -36,7 +36,7 @@ const createProjectsDiv = () => {
     projectDiv.innerHTML = '<h2>Projects</h2>';
 
     const allTasksDiv = document.createElement('div');
-    allTasksDiv.classList.add('panel');
+    allTasksDiv.setAttribute('class', 'panel selected');
     allTasksDiv.id = 'all-tasks';
     allTasksDiv.innerHTML = '<i class="fa-solid fa-list-ul"></i><p>All Tasks</p>';
     homeProjects.appendChild(allTasksDiv);
