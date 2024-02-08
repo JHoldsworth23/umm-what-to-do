@@ -33,3 +33,11 @@ const projectFormButton = () => {
 const createTaskForm = () => {
 
 }
+
+const taskFormButton = () => {
+    const taskDiv = document.querySelector('.right-panel');
+    const taskFormButton = document.createElement('button');
+    taskFormButton.id = 'add-new-task';
+    taskFormButton.innerHTML = '<i class="fa-solid fa-plus"></i> Add a New Task';
+    taskDiv.appendChild(taskFormButton);
+}
