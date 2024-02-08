@@ -106,11 +106,23 @@ const processNewProject = (e) => {
     }
 }
 
+const selectPanel = (panelNode) => {
+    const selectedPanel = document.querySelector('.selected');
+    selectedPanel.classList.remove('selected');
+    panelNode.classList.add('selected');
+}
+
 const checkWhichPanel = (e) => {
     const homePanels = e.target.closest('.home .panel');
     const projectPanels = e.target.closest('.projects .panel');
-    console.log(homePanels);
-    console.log(projectPanels);
+    
+    if (homePanels) {
+        selectPanel(homePanels);
+    }
+    
+    if (projectPanels) {
+        selectPanel(projectPanels);
+    }
 }
 
 createEventListener();
