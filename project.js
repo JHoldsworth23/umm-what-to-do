@@ -20,6 +20,9 @@ const createEventListener = () => {
     const cancelFormBtn = document.querySelector('.cancel-btn');
     cancelFormBtn.addEventListener('click', hideProjectForm);
 
+    const leftPanel = document.querySelector('.left-panel');
+    leftPanel.addEventListener('click', checkWhichPanel);
+
     displayProject(defaultProjects);
 }
 
@@ -93,6 +96,13 @@ const processNewProject = (e) => {
         errorMessage.classList.remove('hidden');
         textInput.classList.add('invalid');
     }
+}
+
+const checkWhichPanel = (e) => {
+    const homePanels = e.target.closest('.home .panel');
+    const projectPanels = e.target.closest('.projects .panel');
+    console.log(homePanels);
+    console.log(projectPanels);
 }
 
 createEventListener();
