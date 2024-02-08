@@ -1,14 +1,15 @@
 let defaultProjects = [];
 
 class Project {
-    constructor(projectName) {
+    constructor(projectId, projectName) {
+        this.id = projectId;
         this.name = projectName;
         this.taskList = [];
     }
 }
 
-defaultProjects.push(new Project('Gym'));
-defaultProjects.push(new Project('Study'));
+defaultProjects.push(new Project(0, 'Gym'));
+defaultProjects.push(new Project(1, 'Study'));
 
 const createEventListener = () => {
     const addProjectBtn = document.querySelector('#add-new-project');
@@ -28,15 +29,16 @@ const createEventListener = () => {
 
 const displayProject = (projectArray) => {
     projectArray.forEach(project => {
-        addProject(project.name);
+        addProject(project.id, project.name);
     });
 }
 
-const addProject = (projectInput) => {
+const addProject = (projectId, projectInput) => {
     const project = document.querySelector('.projects');
     
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('panel');
+    projectContainer.setAttribute('data-projectid', `${projectId}`);
 
     const icon = document.createElement('i');
     icon.setAttribute('class', 'fa-solid fa-list');
@@ -62,6 +64,11 @@ const addProject = (projectInput) => {
     project.insertBefore(projectContainer, projectForm);
 }
 
+const getNextIdNum = () => {
+    const allProjects = document.querySelectorAll('[data-projectid]');
+    return allProjects.length;
+}
+
 const showProjectForm = () => {
     const projectForm = document.querySelector('#project-form');
     projectForm.classList.remove('hidden');
@@ -83,6 +90,7 @@ const processNewProject = (e) => {
 
     const textInput = document.querySelector('#new-project');
     const errorMessage = document.querySelector('.error-message');
+    const projectIdNum = getNextIdNum();
     if (textInput.checkValidity()) {
         errorMessage.classList.add('hidden');
         textInput.classList.remove('invalid');
@@ -90,7 +98,7 @@ const processNewProject = (e) => {
         const projectName = textInput.value;
         const newProject = new Project(projectName);
         defaultProjects.push(newProject);
-        addProject(projectName);
+        addProject(projectIdNum, projectName);
         hideProjectForm();    
     } else {
         errorMessage.classList.remove('hidden');
