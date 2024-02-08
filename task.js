@@ -25,38 +25,46 @@ const addTask = (taskId, taskTitle, details, priority, dueDate, completed) => {
     taskDiv.classList.add('task');
     taskDiv.id = taskId;
 
+    const taskLeftDiv = document.createElement('div');
+    taskLeftDiv.classList.add('task-left-div');
+
     // const checkbox = document.createElement('input');
     // checkbox.type = 'checkbox';
-    // taskDiv.appendChild(checkbox);
+    // taskLeftDiv.appendChild(checkbox);
 
     const priorityStatus = document.createElement('p');
     priorityStatus.setAttribute('class', `${priority.toLowerCase()}`);
     priorityStatus.textContent = priority;
-    taskDiv.appendChild(priorityStatus);
+    taskLeftDiv.appendChild(priorityStatus);
 
     const title = document.createElement('p');
     title.classList.add('task-title');
     title.textContent = taskTitle;
-    taskDiv.appendChild(title);
+    taskLeftDiv.appendChild(title);
+
+    const taskBtns = document.createElement('div');
+    taskBtns.classList.add('task-btns');
 
     const detailsBtn = document.createElement('button');
     detailsBtn.classList.add('details');
     detailsBtn.textContent = 'Details';
-    taskDiv.appendChild(detailsBtn);
+    taskBtns.appendChild(detailsBtn);
 
     const date = document.createElement('p');
     date.classList.add('date');
     date.textContent = dueDate;
-    taskDiv.appendChild(date);
+    taskBtns.appendChild(date);
 
     const editIcon = document.createElement('i');
     editIcon.setAttribute('class', 'task-icon fa-regular fa-pen-to-square');
-    taskDiv.appendChild(editIcon);
+    taskBtns.appendChild(editIcon);
 
     const deleteIcon = document.createElement('i');
     deleteIcon.setAttribute('class', 'task-icon fa-solid fa-trash');
-    taskDiv.appendChild(deleteIcon);
+    taskBtns.appendChild(deleteIcon);
 
+    taskDiv.appendChild(taskLeftDiv);
+    taskDiv.appendChild(taskBtns);
     todoDiv.appendChild(taskDiv);
 }
 
