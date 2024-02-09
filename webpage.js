@@ -74,6 +74,7 @@ const createTaskDiv = () => {
 
     rightPanel.appendChild(currentProjectTitle);
     rightPanel.appendChild(todoList);
+    taskFormButton();
 }
 
 const createFooter = () => {
@@ -128,6 +129,22 @@ const taskFormButton = () => {
     taskFormButton.innerHTML = '<i class="fa-solid fa-plus"></i> Add a New Task';
     taskDiv.appendChild(taskFormButton);
 }
+
+const createTaskForm = () => {
+    const taskDiv = document.querySelector('.right-panel');
+    const addNewTaskBtn = document.querySelector('#add-new-task');
+    const form = document.createElement('form');
+    form.id = 'task-form';
+    form.autocomplete = 'off';
+    // form.classList.add('hidden');
+
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('task-inputs');
+
+    inputDiv.innerHTML = `<h2>FORM</h2>`;
+    form.appendChild(inputDiv);
+    taskDiv.insertBefore(form, addNewTaskBtn);
+}
 // 
 
 const loadWebpage = () => {
@@ -136,7 +153,7 @@ const loadWebpage = () => {
     createProjectsDiv();
     createProjectForm();
     createTaskDiv();
-    taskFormButton();
+    createTaskForm();
     createFooter();
 }
 
