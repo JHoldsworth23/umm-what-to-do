@@ -41,7 +41,28 @@ const createTaskForm = () => {
     const inputDiv = document.createElement('div');
     inputDiv.classList.add('task-inputs');
 
-    inputDiv.innerHTML = `<h2>FORM</h2>`;
+    inputDiv.innerHTML = `
+        <div class="form-task-input">
+            <label for="task-title">Task Title:</label>
+            <input type="text" id="task-title" name="task" maxlength="25" required>
+        </div>
+        <div class="form-task-input">
+            <label for="description">Details (Optional):</label>
+            <textarea id="description" name="task-description" rows="5" cols="40" placeholder="A short description or a checklist..."></textarea>
+        </div>
+        <div class="form-task-input">
+            <div>
+                <input type="radio" id="low" name="priority" value="low" required>
+                <label for="low">Low</label>
+                <input type="radio" id="medium" name="priority" value="medium" required>
+                <label for="medium">Medium</label>
+                <input type="radio" id="high" name="priority" value="high" required>
+                <label for="high">High</label>
+            </div>
+            <label for="due-date">Date:</label>
+            <input type="date" id="due-date" name="deadline" required>
+        </div>
+    `;
     form.appendChild(inputDiv);
     taskDiv.insertBefore(form, addNewTaskBtn);
 }
