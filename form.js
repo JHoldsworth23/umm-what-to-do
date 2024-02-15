@@ -63,8 +63,8 @@ const createTaskForm = () => {
             <input type="date" id="due-date" name="deadline" required>
         </div>
         <div class="task-form-buttons">
-            <input type="submit" class="submit-btn" value="Add">
-            <input type="button" class="cancel-btn" value="Cancel">
+            <input type="submit" class="task-submit-btn" value="Add">
+            <input type="button" class="task-cancel-btn" value="Cancel">
         </div>
     `;
     form.appendChild(inputDiv);
