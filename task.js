@@ -10,6 +10,11 @@ class Task {
     }
 }
 
+const taskEvent = () => {
+    const addTaskBtn = document.querySelector('#add-new-task');
+    addTaskBtn.addEventListener('click', showTaskForm);
+}
+
 // const displayTask = (currentProject) => {
 //     const todoDiv = document.querySelector('.todo-list');
 //     todoDiv.textContent = '';
@@ -49,6 +54,7 @@ const addTask = (taskId, taskTitle, details, priority, dueDate, completed) => {
     detailsBtn.classList.add('details');
     detailsBtn.textContent = 'Details';
     taskBtns.appendChild(detailsBtn);
+    // add event for the button - dialog
 
     const date = document.createElement('p');
     date.classList.add('date');
@@ -68,4 +74,11 @@ const addTask = (taskId, taskTitle, details, priority, dueDate, completed) => {
     todoDiv.appendChild(taskDiv);
 }
 
+const showTaskForm = () => {
+    const taskForm = document.querySelector('#task-form');
+    taskForm.classList.remove('hidden');
+    document.querySelector('#task-title').focus();
+}
+
+taskEvent();
 addTask(0, 'Lift Weights', '', 'Medium', '6th Feb', false);
