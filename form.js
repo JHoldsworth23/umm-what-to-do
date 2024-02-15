@@ -36,7 +36,7 @@ const createTaskForm = () => {
     const form = document.createElement('form');
     form.id = 'task-form';
     form.autocomplete = 'off';
-    // form.classList.add('hidden');
+    form.classList.add('hidden');
 
     const inputDiv = document.createElement('div');
     inputDiv.classList.add('task-inputs');
@@ -61,6 +61,10 @@ const createTaskForm = () => {
             </div>
             <label for="due-date">Date:</label>
             <input type="date" id="due-date" name="deadline" required>
+        </div>
+        <div class="task-form-buttons">
+            <input type="submit" class="submit-btn" value="Add">
+            <input type="button" class="cancel-btn" value="Cancel">
         </div>
     `;
     form.appendChild(inputDiv);
