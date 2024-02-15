@@ -108,6 +108,16 @@ const processNewProject = (e) => {
     }
 }
 
+const showAddTaskBtn = () => {
+    const addBtn = document.querySelector('#add-new-task');
+    addBtn.classList.remove('hidden');
+}
+
+const hideAddTaskBtn = () => {
+    const addBtn = document.querySelector('#add-new-task');
+    addBtn.classList.add('hidden');
+}
+
 const selectPanel = (panelNode) => {
     const selectedPanel = document.querySelector('.selected');
     selectedPanel.classList.remove('selected');
@@ -120,6 +130,7 @@ const checkWhichPanel = (e) => {
     
     if (homePanels) {
         selectPanel(homePanels);
+        hideAddTaskBtn();
     }
     
     if (projectPanels) {
@@ -128,6 +139,7 @@ const checkWhichPanel = (e) => {
 
         displayTask(projectId);
         selectPanel(projectPanels);
+        showAddTaskBtn();
     }
 }
 
