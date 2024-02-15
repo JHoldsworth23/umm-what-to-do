@@ -14,6 +14,9 @@ const taskEvent = () => {
     const addTaskBtn = document.querySelector('#add-new-task');
     addTaskBtn.addEventListener('click', showTaskForm);
 
+    const submitTaskForm = document.querySelector('.task-submit-btn');
+    submitTaskForm.addEventListener('click', processNewTask);
+
     const cancelTaskForm = document.querySelector('.task-cancel-btn');
     cancelTaskForm.addEventListener('click', hideTaskForm);
 }
@@ -93,6 +96,20 @@ const hideTaskForm = () => {
     taskDetails.value = '';
     dateInput.value = '';
     taskForm.classList.add('hidden');
+}
+
+const processNewTask = (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector('#task-title').value;
+    const details = document.querySelector('#description').value;
+    const priority = document.querySelector('input[name="priority"]:checked').value;
+    const date = document.querySelector('#due-date').value;
+
+    console.log(title);
+    console.log(details)
+    console.log(priority)
+    console.log(date)
 }
 
 taskEvent();
