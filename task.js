@@ -31,7 +31,7 @@ const taskEvent = () => {
 //     });
 // }
 
-const addTask = (taskId, taskTitle, details, priority, dueDate, completed) => {
+const addTask = (taskId, taskTitle, priority, dueDate) => {
     const todoDiv = document.querySelector('.todo-list');
 
     const taskDiv = document.createElement('div');
@@ -111,7 +111,12 @@ const processNewTask = (e) => {
     let currentProject = findCurrentProject();
     let taskId = idCounter;
 
-    console.log(currentProject);
+    const newTask = new Task(currentProject, taskId, title, details, priority, date);
+    defaultProjects[currentProject].taskList.push(newTask);
+    idCounter++;
+
+    addTask(taskId, title, priority, date);
+    hideTaskForm();
 }
 
 const findCurrentProject = () => {
