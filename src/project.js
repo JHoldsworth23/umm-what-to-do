@@ -125,4 +125,4 @@ const checkWhichPanel = (e) => {
     }
 }
 
-createEventListener();
+export default createEventListener;

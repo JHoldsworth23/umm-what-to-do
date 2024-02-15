@@ -124,5 +124,4 @@ const findCurrentProject = () => {
     return selectedProject.dataset.projectid;
 }
 
-taskEvent();
-addTask(0, 'Lift Weights', '', 'Medium', '6th Feb', false);
+export { taskEvent, addTask };
