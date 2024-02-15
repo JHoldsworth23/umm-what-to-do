@@ -13,6 +13,9 @@ class Task {
 const taskEvent = () => {
     const addTaskBtn = document.querySelector('#add-new-task');
     addTaskBtn.addEventListener('click', showTaskForm);
+
+    const cancelTaskForm = document.querySelector('.task-cancel-btn');
+    cancelTaskForm.addEventListener('click', hideTaskForm);
 }
 
 // const displayTask = (currentProject) => {
@@ -78,6 +81,18 @@ const showTaskForm = () => {
     const taskForm = document.querySelector('#task-form');
     taskForm.classList.remove('hidden');
     document.querySelector('#task-title').focus();
+}
+
+const hideTaskForm = () => {
+    const taskForm = document.querySelector('#task-form');
+    const taskTitleInput = document.querySelector('#task-title');
+    const taskDetails = document.querySelector('#description');
+    const dateInput = document.querySelector('#due-date');
+
+    taskTitleInput.value = '';
+    taskDetails.value = '';
+    dateInput.value = '';
+    taskForm.classList.add('hidden');
 }
 
 taskEvent();
