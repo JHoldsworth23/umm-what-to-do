@@ -182,4 +182,4 @@ const loadWebpage = () => {
     createFooter();
 }
 
-loadWebpage();
+export default loadWebpage;
