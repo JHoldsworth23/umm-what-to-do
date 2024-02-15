@@ -1,3 +1,5 @@
+let idCounter = 0;
+
 class Task {
     constructor(projectId, taskId, title, details, priority, dueDate) {
         this.projectId = projectId;
@@ -106,10 +108,15 @@ const processNewTask = (e) => {
     const priority = document.querySelector('input[name="priority"]:checked').value;
     const date = document.querySelector('#due-date').value;
 
-    console.log(title);
-    console.log(details)
-    console.log(priority)
-    console.log(date)
+    let currentProject = findCurrentProject();
+    let taskId = idCounter;
+
+    console.log(currentProject);
+}
+
+const findCurrentProject = () => {
+    const selectedProject = document.querySelector('.selected');
+    return selectedProject.dataset.projectid;
 }
 
 taskEvent();
