@@ -19,6 +19,15 @@ header {
     padding: 0 20px;
 }
 
+.hidden {
+    display: none;
+}
+
+.selected {
+    background-color: cadetblue;
+    color: whitesmoke;
+}
+
 .home > h2, .projects > h2 {
     font-size: 1.6rem;
     margin: 20px 12px 8px;
@@ -50,6 +59,29 @@ header {
 
 .right-panel {
     background-color: khaki;
+}
+
+.task {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 32px;
+    background-color: teal;
+    color: whitesmoke;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.task-left-div, .task-btns {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+#description {
+    resize: none;
 }
 
 footer {
