@@ -78,3 +78,5 @@ const taskFormButton = () => {
     taskFormButton.innerHTML = '<i class="fa-solid fa-plus"></i> Add a New Task';
     taskDiv.appendChild(taskFormButton);
 }
+
+export { createProjectForm, projectFormButton, createTaskForm, taskFormButton };
