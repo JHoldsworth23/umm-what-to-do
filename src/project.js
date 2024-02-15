@@ -1,3 +1,5 @@
+import { displayTask } from "./task";
+
 let defaultProjects = [];
 
 class Project {
@@ -121,8 +123,12 @@ const checkWhichPanel = (e) => {
     }
     
     if (projectPanels) {
+        const projectTitle = projectPanels.querySelector('.project-name').textContent;
+        let projectId = projectPanels.dataset.projectid;
+
+        displayTask(projectId);
         selectPanel(projectPanels);
     }
 }
 
-export default createEventListener;
+export { createEventListener, defaultProjects };

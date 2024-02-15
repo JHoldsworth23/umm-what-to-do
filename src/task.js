@@ -1,3 +1,5 @@
+import { defaultProjects } from "./project";
+
 let idCounter = 0;
 
 class Task {
@@ -23,15 +25,15 @@ const taskEvent = () => {
     cancelTaskForm.addEventListener('click', hideTaskForm);
 }
 
-// const displayTask = (currentProject) => {
-//     const todoDiv = document.querySelector('.todo-list');
-//     todoDiv.textContent = '';
-//     defaultProjects[currentProject].taskList.forEach(task => {
-//         addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
-//     });
-// }
+const displayTask = (currentProject) => {
+    const todoDiv = document.querySelector('.todo-list');
+    todoDiv.textContent = '';
+    defaultProjects[currentProject].taskList.forEach(task => {
+        addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
+    });
+}
 
-const addTask = (taskId, taskTitle, priority, dueDate) => {
+const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     const todoDiv = document.querySelector('.todo-list');
 
     const taskDiv = document.createElement('div');
@@ -41,9 +43,9 @@ const addTask = (taskId, taskTitle, priority, dueDate) => {
     const taskLeftDiv = document.createElement('div');
     taskLeftDiv.classList.add('task-left-div');
 
-    // const checkbox = document.createElement('input');
-    // checkbox.type = 'checkbox';
-    // taskLeftDiv.appendChild(checkbox);
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    taskLeftDiv.appendChild(checkbox);
 
     const priorityStatus = document.createElement('p');
     priorityStatus.setAttribute('class', `${priority.toLowerCase()}`);
@@ -115,7 +117,7 @@ const processNewTask = (e) => {
     defaultProjects[currentProject].taskList.push(newTask);
     idCounter++;
 
-    addTask(taskId, title, priority, date);
+    addTask(taskId, title, details, priority, date);
     hideTaskForm();
 }
 
@@ -124,4 +126,4 @@ const findCurrentProject = () => {
     return selectedProject.dataset.projectid;
 }
 
-export { taskEvent, addTask };
+export { taskEvent, displayTask, addTask };
