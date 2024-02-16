@@ -94,12 +94,36 @@ const hideTaskForm = () => {
     const taskForm = document.querySelector('#task-form');
     const taskTitleInput = document.querySelector('#task-title');
     const taskDetails = document.querySelector('#description');
+    const priority = document.querySelector('input[name="priority"]:checked');
     const dateInput = document.querySelector('#due-date');
 
     taskTitleInput.value = '';
     taskDetails.value = '';
+    if (priority) priority.checked = false;
     dateInput.value = '';
+
+    hideErrorMessage();
     taskForm.classList.add('hidden');
+}
+
+const showErrorMessage = (title, priorityArray, date) => {
+    const titleError = document.querySelector('#task-title + span');
+    const priorityError = document.querySelector('label[for="high"] + span');
+    const dateError = document.querySelector('#due-date + span');
+
+    !title.value ? titleError.classList.remove('hidden') : titleError.classList.add('hidden');
+    !priorityArray.some(radioInputsCheck) ? priorityError.classList.remove('hidden') : priorityError.classList.add('hidden');        
+    !date.value ? dateError.classList.remove('hidden') : dateError.classList.add('hidden');
+}
+
+const hideErrorMessage = () => {
+    const titleError = document.querySelector('#task-title + span');
+    const priorityError = document.querySelector('label[for="high"] + span');
+    const dateError = document.querySelector('#due-date + span');
+
+    titleError.classList.add('hidden');
+    priorityError.classList.add('hidden');
+    dateError.classList.add('hidden');
 }
 
 function radioInputsCheck(input) {
@@ -115,10 +139,6 @@ const processNewTask = (e) => {
     const priorityArray = Array.from(document.querySelectorAll('input[name="priority"]'));
     const date = document.querySelector('#due-date');
 
-    const titleError = document.querySelector('#task-title + span');
-    const priorityError = document.querySelector('label[for="high"] + span');
-    const dateError = document.querySelector('#due-date + span');
-
     if (taskInputs.checkValidity()) {
         const priority = document.querySelector('input[name="priority"]:checked');
 
@@ -129,16 +149,11 @@ const processNewTask = (e) => {
         defaultProjects[currentProject].taskList.push(newTask);
         idCounter++;
 
-        titleError.classList.add('hidden');
-        priorityError.classList.add('hidden');
-        dateError.classList.add('hidden');
-
         addTask(taskId, title.value, details.value, priority.value, date.value);
+        hideErrorMessage();
         hideTaskForm();
     } else {
-        !title.value ? titleError.classList.remove('hidden') : titleError.classList.add('hidden');
-        !priorityArray.some(radioInputsCheck) ? priorityError.classList.remove('hidden') : priorityError.classList.add('hidden');        
-        !date.value ? dateError.classList.remove('hidden') : dateError.classList.add('hidden');
+        showErrorMessage(title, priorityArray, date);
     }
 }
 
