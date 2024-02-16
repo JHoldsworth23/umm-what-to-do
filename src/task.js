@@ -126,4 +126,9 @@ const findCurrentProject = () => {
     return selectedProject.dataset.projectid;
 }
 
-export { taskEvent, displayTask, addTask };
+const updateTaskTitle = (newTitle) => {
+    const title = document.querySelector('.project-title');
+    title.textContent = newTitle;
+}
+
+export { taskEvent, displayTask, addTask, updateTaskTitle };

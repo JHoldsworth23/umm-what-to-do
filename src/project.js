@@ -1,4 +1,4 @@
-import { displayTask } from "./task";
+import { displayTask, updateTaskTitle } from "./task";
 
 let defaultProjects = [];
 
@@ -129,15 +129,17 @@ const checkWhichPanel = (e) => {
     const projectPanels = e.target.closest('.projects .panel');
     
     if (homePanels) {
+        const homeTitle = homePanels.querySelector('p').textContent;
         selectPanel(homePanels);
+        updateTaskTitle(homeTitle);
         hideAddTaskBtn();
     }
     
     if (projectPanels) {
         const projectTitle = projectPanels.querySelector('.project-name').textContent;
         let projectId = projectPanels.dataset.projectid;
-
         displayTask(projectId);
+        updateTaskTitle(projectTitle);
         selectPanel(projectPanels);
         showAddTaskBtn();
     }
