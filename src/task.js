@@ -102,23 +102,44 @@ const hideTaskForm = () => {
     taskForm.classList.add('hidden');
 }
 
+function radioInputsCheck(input) {
+    return input.checked;
+}
+
 const processNewTask = (e) => {
     e.preventDefault();
 
-    const title = document.querySelector('#task-title').value;
-    const details = document.querySelector('#description').value;
-    const priority = document.querySelector('input[name="priority"]:checked').value;
-    const date = document.querySelector('#due-date').value;
+    const taskInputs = document.querySelector('#task-form');
+    const title = document.querySelector('#task-title');
+    const details = document.querySelector('#description');
+    const priorityArray = Array.from(document.querySelectorAll('input[name="priority"]'));
+    const date = document.querySelector('#due-date');
 
-    let currentProject = findCurrentProject();
-    let taskId = idCounter;
+    const titleError = document.querySelector('#task-title + span');
+    const priorityError = document.querySelector('label[for="high"] + span');
+    const dateError = document.querySelector('#due-date + span');
 
-    const newTask = new Task(currentProject, taskId, title, details, priority, date);
-    defaultProjects[currentProject].taskList.push(newTask);
-    idCounter++;
+    if (taskInputs.checkValidity()) {
+        const priority = document.querySelector('input[name="priority"]:checked');
 
-    addTask(taskId, title, details, priority, date);
-    hideTaskForm();
+        let currentProject = findCurrentProject();
+        let taskId = idCounter;
+
+        const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, date.value);
+        defaultProjects[currentProject].taskList.push(newTask);
+        idCounter++;
+
+        titleError.classList.add('hidden');
+        priorityError.classList.add('hidden');
+        dateError.classList.add('hidden');
+
+        addTask(taskId, title.value, details.value, priority.value, date.value);
+        hideTaskForm();
+    } else {
+        !title.value ? titleError.classList.remove('hidden') : titleError.classList.add('hidden');
+        !priorityArray.some(radioInputsCheck) ? priorityError.classList.remove('hidden') : priorityError.classList.add('hidden');        
+        !date.value ? dateError.classList.remove('hidden') : dateError.classList.add('hidden');
+    }
 }
 
 const findCurrentProject = () => {
