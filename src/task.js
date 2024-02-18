@@ -134,7 +134,9 @@ const checkDate = (input) => {
     const inputDate = new Date(input);
     const currentDate = new Date();
 
-    return inputDate < currentDate ? "The input date is in the past" : "The input date is in the future";
+    const differenceInDays = Math.floor((inputDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)) + 1;
+
+    return differenceInDays === 0 ? "Due Today" : differenceInDays > 0 ? `Due in ${differenceInDays} day(s)` : `${Math.abs(differenceInDays)} day(s) overdue`;
 }
 
 const processNewTask = (e) => {
@@ -155,15 +157,15 @@ const processNewTask = (e) => {
         const date = checkDate(dueDate.value);
         console.log(date);
 
-        const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, dueDate.value);
+        const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, date);
         defaultProjects[currentProject].taskList.push(newTask);
         idCounter++;
 
-        addTask(taskId, title.value, details.value, priority.value, date.value);
+        addTask(taskId, title.value, details.value, priority.value, date);
         hideErrorMessage();
         hideTaskForm();
     } else {
-        showErrorMessage(title, priorityArray, date);
+        showErrorMessage(title, priorityArray, dueDate);
     }
 }
 
