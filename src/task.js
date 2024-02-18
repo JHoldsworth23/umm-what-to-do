@@ -130,6 +130,13 @@ function radioInputsCheck(input) {
     return input.checked;
 }
 
+const checkDate = (input) => {
+    const inputDate = new Date(input);
+    const currentDate = new Date();
+
+    return inputDate < currentDate ? "The input date is in the past" : "The input date is in the future";
+}
+
 const processNewTask = (e) => {
     e.preventDefault();
 
@@ -137,7 +144,7 @@ const processNewTask = (e) => {
     const title = document.querySelector('#task-title');
     const details = document.querySelector('#description');
     const priorityArray = Array.from(document.querySelectorAll('input[name="priority"]'));
-    const date = document.querySelector('#due-date');
+    const dueDate = document.querySelector('#due-date');
 
     if (taskInputs.checkValidity()) {
         const priority = document.querySelector('input[name="priority"]:checked');
@@ -145,7 +152,10 @@ const processNewTask = (e) => {
         let currentProject = findCurrentProject();
         let taskId = idCounter;
 
-        const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, date.value);
+        const date = checkDate(dueDate.value);
+        console.log(date);
+
+        const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, dueDate.value);
         defaultProjects[currentProject].taskList.push(newTask);
         idCounter++;
 
