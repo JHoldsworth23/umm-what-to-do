@@ -69,6 +69,7 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     const date = document.createElement('p');
     date.classList.add('date');
     date.textContent = dueDate;
+    if (dueDate.includes("overdue")) date.classList.add('overdue');
     taskBtns.appendChild(date);
 
     const editIcon = document.createElement('i');
@@ -155,7 +156,6 @@ const processNewTask = (e) => {
         let taskId = idCounter;
 
         const date = checkDate(dueDate.value);
-        console.log(date);
 
         const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, date);
         defaultProjects[currentProject].taskList.push(newTask);
