@@ -1,10 +1,9 @@
-const renameProjectEvent = () => {
-    const projectOptions = document.querySelectorAll('.edit-project');
+import { hideAddTaskBtn, defaultProjects } from "./project";
+import { updateTaskTitle } from "./task";
 
-    projectOptions.forEach(project => {
-        project.firstChild.addEventListener('click', showRenameForm);
-    });
-//     projectOptions.lastChild.addEventListener('click', ); // Delete the project
+const editProjectEvents = (renameBtn, deleteBtn) => {
+    renameBtn.addEventListener('click', showRenameForm);
+    deleteBtn.addEventListener('click', deleteProject);
 }
 
 const renameProjectForm = () => {
@@ -48,4 +47,20 @@ const locateRenameForm = (selectedPanel) => {
     projectDiv.insertBefore(renameForm, selectedPanel);
 }
 
-export { renameProjectEvent, renameProjectForm };
+const deleteProject = (e) => {
+    const panel = e.target.closest('.panel');
+    const panelIndex = panel.dataset.projectid;
+
+    if (panel.classList.contains('selected')) {
+        const allTasks = document.querySelector('#all-tasks');
+        const title = allTasks.querySelector('p');
+        allTasks.classList.add('selected');
+        updateTaskTitle(title.textContent);
+        hideAddTaskBtn();
+    }
+
+    panel.remove();
+    defaultProjects.splice(panelIndex, 1);
+}
+
+export { editProjectEvents, renameProjectForm };
