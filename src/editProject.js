@@ -60,7 +60,22 @@ const deleteProject = (e) => {
     }
 
     panel.remove();
+    resetIndex();
     defaultProjects.splice(panelIndex, 1);
+}
+
+const resetIndex = () => {
+    let index = 0;
+    const panels = document.querySelectorAll('.projects .panel');
+
+    panels.forEach(panel => {
+        const projectId = panel.dataset.projectid;
+        panel.dataset.projectid = index;
+        defaultProjects[projectId].id = index;
+        index++;
+    });
+
+    defaultProjects.sort((a, b) => a.id - b.id);
 }
 
 export { editProjectEvents, renameProjectForm };
