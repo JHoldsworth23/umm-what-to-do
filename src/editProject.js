@@ -2,7 +2,7 @@ const renameProjectEvent = () => {
     const projectOptions = document.querySelectorAll('.edit-project');
 
     projectOptions.forEach(project => {
-        project.firstChild.addEventListener('click', renameProject); // Rename the project
+        project.firstChild.addEventListener('click', showRenameForm);
     });
 //     projectOptions.lastChild.addEventListener('click', ); // Delete the project
 }
@@ -28,23 +28,24 @@ const renameProjectForm = () => {
     projectDiv.appendChild(renameForm);
 }
 
-const renameProject = (e) => {
+const showRenameForm = (e) => {
     const editProjectOption = e.target.parentNode;
     const panel = editProjectOption.parentNode;
 
-    showRenameForm(panel);
+    locateRenameForm(panel);
+    panel.classList.add('rename');
 }
 
-const showRenameForm = (selectedProject) => {
+const locateRenameForm = (selectedPanel) => {
     const projectDiv = document.querySelector('.projects');
     const renameForm = document.querySelector('#rename-project-form');
-    const projectName = selectedProject.querySelector('.project-name').textContent;
+    const projectName = selectedPanel.querySelector('.project-name').textContent;
 
     const textInput = renameForm.querySelector('input');
     textInput.value = projectName;
 
     renameForm.classList.remove('hidden');
-    projectDiv.insertBefore(renameForm, selectedProject);
+    projectDiv.insertBefore(renameForm, selectedPanel);
 }
 
 export { renameProjectEvent, renameProjectForm };
