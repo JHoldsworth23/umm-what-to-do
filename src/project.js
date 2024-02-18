@@ -1,3 +1,4 @@
+import { editProjectEvents } from "./editProject";
 import { displayTask, updateTaskTitle } from "./task";
 
 let defaultProjects = [];
@@ -57,6 +58,7 @@ const addProject = (projectId, projectInput) => {
     editIcon.setAttribute('class', 'fa-regular fa-pen-to-square');
     const deleteIcon = document.createElement('i');
     deleteIcon.setAttribute('class', 'fa-solid fa-trash');
+    editProjectEvents(editIcon, deleteIcon);
 
     editProjectDiv.appendChild(editIcon);
     editProjectDiv.appendChild(deleteIcon);
@@ -145,4 +147,4 @@ const checkWhichPanel = (e) => {
     }
 }
 
-export { createEventListener, defaultProjects };
+export { createEventListener, hideAddTaskBtn, defaultProjects };
