@@ -52,7 +52,7 @@ const addProject = (projectId, projectInput) => {
     projectContainer.appendChild(projectName);
 
     const editProjectDiv = document.createElement('div');
-    editProjectDiv.classList.add('edit-div');
+    editProjectDiv.classList.add('edit-project');
     const editIcon = document.createElement('i');
     editIcon.setAttribute('class', 'fa-regular fa-pen-to-square');
     const deleteIcon = document.createElement('i');
