@@ -33,7 +33,7 @@ const renameProjectForm = () => {
             <input type="text" id="rename-project" maxlength="20">
         </div>
         <div class="rename-buttons">
-            <input type="submit" class="rename-btn" value="Rename">
+            <input type="button" class="rename-btn" value="Rename">
             <input type="button" class="cancel-rename" value="Cancel">
         </div>
     `;
@@ -52,6 +52,7 @@ const processRenameInput = () => {
 
     selectedPanel.classList.remove('rename');
     updateTaskTitle(projectName.textContent);
+    hideRenameForm()
 }
 
 const showRenameForm = (e) => {
@@ -60,6 +61,11 @@ const showRenameForm = (e) => {
 
     locateRenameForm(panel);
     panel.classList.add('rename');
+}
+
+const hideRenameForm = () => {
+    const renameForm = document.getElementById('rename-project-form');
+    renameForm.classList.add('hidden');
 }
 
 const locateRenameForm = (selectedPanel) => {
