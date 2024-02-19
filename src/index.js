@@ -1,8 +1,9 @@
 import loadWebpage from "./webpage";
 import { createEventListener } from "./project";
-import { taskEvent, addTask } from "./task";
+import { taskEvent } from "./task";
+import { renameProjectEvents } from "./editProject";
 
 loadWebpage();
-// addTask(0, 'Lift Weights', '', 'Medium', '6th Feb', false);
 taskEvent();
 createEventListener();
+renameProjectEvents();
