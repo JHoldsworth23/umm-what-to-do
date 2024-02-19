@@ -9,7 +9,7 @@ const editProjectEvents = (editBtn, deleteBtn) => {
 const renameProjectEvents = () => {
     const renameBtn = document.querySelector('.rename-btn');
     renameBtn.addEventListener('click', (e) => {
-        console.log("Rename this project");
+        processRenameInput();
         e.preventDefault();
     });
 
@@ -39,6 +39,19 @@ const renameProjectForm = () => {
     `;
 
     projectDiv.appendChild(renameForm);
+}
+
+const processRenameInput = () => {
+    const selectedPanel = document.querySelector('.projects > .rename');
+    const projectName = selectedPanel.querySelector('.project-name');
+    const renameInput = document.querySelector('#rename-project').value;
+    projectName.textContent = renameInput;
+
+    const projectId = selectedPanel.dataset.projectid;
+    defaultProjects[projectId].name = renameInput;
+
+    selectedPanel.classList.remove('rename');
+    updateTaskTitle(projectName.textContent);
 }
 
 const showRenameForm = (e) => {
