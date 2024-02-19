@@ -1,9 +1,23 @@
 import { hideAddTaskBtn, defaultProjects } from "./project";
 import { updateTaskTitle } from "./task";
 
-const editProjectEvents = (renameBtn, deleteBtn) => {
-    renameBtn.addEventListener('click', showRenameForm);
+const editProjectEvents = (editBtn, deleteBtn) => {
+    editBtn.addEventListener('click', showRenameForm);
     deleteBtn.addEventListener('click', deleteProject);
+}
+
+const renameProjectEvents = () => {
+    const renameBtn = document.querySelector('.rename-btn');
+    renameBtn.addEventListener('click', (e) => {
+        console.log("Rename this project");
+        e.preventDefault();
+    });
+
+    const cancelBtn = document.querySelector('.cancel-rename');
+    cancelBtn.addEventListener('click', (e) => {
+        console.log("Don't rename this project");
+        e.preventDefault();
+    });
 }
 
 const renameProjectForm = () => {
@@ -78,4 +92,4 @@ const resetIndex = () => {
     defaultProjects.sort((a, b) => a.id - b.id);
 }
 
-export { editProjectEvents, renameProjectForm };
+export { editProjectEvents, renameProjectEvents, renameProjectForm };
