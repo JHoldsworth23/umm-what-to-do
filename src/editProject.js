@@ -14,9 +14,10 @@ const renameProjectEvents = () => {
     });
 
     const cancelBtn = document.querySelector('.cancel-rename');
-    cancelBtn.addEventListener('click', (e) => {
-        console.log("Don't rename this project");
-        e.preventDefault();
+    cancelBtn.addEventListener('click', () => {
+        const selectedPanel = document.querySelector('.projects > .rename');
+        selectedPanel.classList.remove('rename');
+        hideRenameForm();
     });
 }
 
