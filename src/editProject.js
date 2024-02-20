@@ -15,9 +15,8 @@ const renameProjectEvents = () => {
 
     const cancelBtn = document.querySelector('.cancel-rename');
     cancelBtn.addEventListener('click', () => {
-        const project = document.querySelector('.selected.hidden');
-        project.classList.remove('hidden');
         hideRenameForm();
+        displayHiddenPanel();
     });
 }
 
