@@ -15,8 +15,8 @@ const renameProjectEvents = () => {
 
     const cancelBtn = document.querySelector('.cancel-rename');
     cancelBtn.addEventListener('click', () => {
-        const selectedPanel = document.querySelector('.projects > .rename');
-        selectedPanel.classList.remove('rename');
+        const project = document.querySelector('.selected.hidden');
+        project.classList.remove('hidden');
         hideRenameForm();
     });
 }
@@ -43,7 +43,7 @@ const renameProjectForm = () => {
 }
 
 const processRenameInput = () => {
-    const selectedPanel = document.querySelector('.projects > .rename');
+    const selectedPanel = document.querySelector('.panel.hidden');
     const projectName = selectedPanel.querySelector('.project-name');
     const renameInput = document.querySelector('#rename-project').value;
     projectName.textContent = renameInput;
@@ -51,7 +51,7 @@ const processRenameInput = () => {
     const projectId = selectedPanel.dataset.projectid;
     defaultProjects[projectId].name = renameInput;
 
-    selectedPanel.classList.remove('rename');
+    selectedPanel.classList.remove('hidden');
     updateTaskTitle(projectName.textContent);
     hideRenameForm()
 }
@@ -60,13 +60,23 @@ const showRenameForm = (e) => {
     const editProjectOption = e.target.parentNode;
     const panel = editProjectOption.parentNode;
 
+    if (checkRenameFormExist()) {
+        hideRenameForm();
+        // displayHiddenPanel();
+    }
+
+    panel.classList.add('hidden');
     locateRenameForm(panel);
-    panel.classList.add('rename');
 }
 
 const hideRenameForm = () => {
     const renameForm = document.getElementById('rename-project-form');
     renameForm.classList.add('hidden');
+}
+
+const checkRenameFormExist = () => {
+    const renameForm = document.getElementById('rename-project-form');
+    return renameForm.classList.contains('hidden') ? true : false;
 }
 
 const locateRenameForm = (selectedPanel) => {
@@ -76,6 +86,7 @@ const locateRenameForm = (selectedPanel) => {
 
     const textInput = renameForm.querySelector('input');
     textInput.value = projectName;
+    textInput.focus();
 
     renameForm.classList.remove('hidden');
     projectDiv.insertBefore(renameForm, selectedPanel);
