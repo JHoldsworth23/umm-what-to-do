@@ -62,11 +62,11 @@ const showRenameForm = (e) => {
 
     if (checkRenameFormExist()) {
         hideRenameForm();
-        // displayHiddenPanel();
+        displayHiddenPanel();
     }
 
-    panel.classList.add('hidden');
     locateRenameForm(panel);
+    panel.classList.add('hidden');
 }
 
 const hideRenameForm = () => {
@@ -76,7 +76,7 @@ const hideRenameForm = () => {
 
 const checkRenameFormExist = () => {
     const renameForm = document.getElementById('rename-project-form');
-    return renameForm.classList.contains('hidden') ? true : false;
+    return renameForm.classList.contains('hidden') ? false : true;
 }
 
 const locateRenameForm = (selectedPanel) => {
@@ -90,6 +90,11 @@ const locateRenameForm = (selectedPanel) => {
 
     renameForm.classList.remove('hidden');
     projectDiv.insertBefore(renameForm, selectedPanel);
+}
+
+const displayHiddenPanel = () => {
+    const hiddenPanel = document.querySelector('.panel.hidden');
+    hiddenPanel.classList.remove('hidden');
 }
 
 const deleteProject = (e) => {
