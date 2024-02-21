@@ -1,6 +1,8 @@
+import { defaultProjects } from "./project";
+
 const editTaskEvents = (editBtn, deleteBtn) => {
     editBtn.addEventListener('click', showEditTaskForm);
-    deleteBtn.addEventListener('click', () => {console.log('delete this task')});
+    deleteBtn.addEventListener('click', deleteTask);
 }
 
 const editTaskFormEvents = () => {
@@ -68,6 +70,25 @@ const placeEditTaskForm = (selectedTask) => {
 
     editTaskForm.classList.remove('hidden');
     rightPanel.insertBefore(editTaskForm, todoListDiv);
+}
+
+const deleteTask = (e) => {
+    const task = e.target.closest('.task');
+    const taskId = task.id;
+    const taskToBeDeleted = findTaskInProject(taskId);
+    const projectId = taskToBeDeleted.projectId;
+
+    defaultProjects[projectId].taskList = defaultProjects[projectId].taskList.filter(task => task != taskToBeDeleted);
+    task.remove();
+}
+
+const findTaskInProject = (id) => {
+    const selectedTask = defaultProjects.reduce((obj, project) => {
+        let currentTask = project.taskList.find(task => (task.id == id));
+        if (currentTask != null) obj = currentTask;
+        return obj;
+    }, {});
+    return selectedTask;
 }
 
 export { editTaskForm, editTaskEvents };
