@@ -1,5 +1,6 @@
 import { createProjectForm, projectFormButton, createTaskForm, taskFormButton } from "./form";
 import { renameProjectForm } from "./editProject";
+import editTaskForm from "./editTask";
 
 const createMainComponent = () => {
     const content = document.querySelector('#content');
@@ -100,6 +101,7 @@ const loadWebpage = () => {
     renameProjectForm();
     createTaskDiv();
     createTaskForm();
+    editTaskForm();
     createFooter();
 }
 
