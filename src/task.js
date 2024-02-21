@@ -1,3 +1,4 @@
+import { editTaskEvents } from "./editTask";
 import { defaultProjects } from "./project";
 
 let idCounter = 0;
@@ -64,7 +65,6 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     detailsBtn.classList.add('details');
     detailsBtn.textContent = 'Details';
     taskBtns.appendChild(detailsBtn);
-    // add event for the button - dialog
 
     const date = document.createElement('p');
     date.classList.add('date');
@@ -79,6 +79,8 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     const deleteIcon = document.createElement('i');
     deleteIcon.setAttribute('class', 'task-icon fa-solid fa-trash');
     taskBtns.appendChild(deleteIcon);
+
+    editTaskEvents(editIcon, deleteIcon);
 
     taskDiv.appendChild(taskLeftDiv);
     taskDiv.appendChild(taskBtns);
@@ -134,7 +136,6 @@ function radioInputsCheck(input) {
 const checkDate = (input) => {
     const inputDate = new Date(input);
     const currentDate = new Date();
-
     const differenceInDays = Math.floor((inputDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)) + 1;
 
     return differenceInDays === 0 ? "Due Today" : differenceInDays > 0 ? `Due in ${differenceInDays} day(s)` : `${Math.abs(differenceInDays)} day(s) overdue`;
@@ -156,7 +157,6 @@ const processNewTask = (e) => {
         let taskId = idCounter;
 
         const date = checkDate(dueDate.value);
-
         const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, date);
         defaultProjects[currentProject].taskList.push(newTask);
         idCounter++;
