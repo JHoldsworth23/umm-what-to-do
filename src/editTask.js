@@ -6,7 +6,9 @@ const editTaskEvents = (editBtn, deleteBtn) => {
 }
 
 const editTaskFormEvents = () => {
+    const editTaskBtn = document.querySelector('.edit-submit-btn');
 
+    const cancelBtn = document.querySelector('.edit-cancel-btn');
 }
 
 const editTaskForm = () => {
@@ -47,6 +49,10 @@ const editTaskForm = () => {
     rightPanel.appendChild(editTaskForm);
 }
 
+const processTaskInputs = () => {
+
+}
+
 const showEditTaskForm = (e) => {
     const editTaskButtons = e.target.parentNode;
     const taskDiv = editTaskButtons.parentNode;
@@ -70,6 +76,10 @@ const placeEditTaskForm = (selectedTask) => {
 
     editTaskForm.classList.remove('hidden');
     rightPanel.insertBefore(editTaskForm, todoListDiv);
+}
+
+const displayHiddenTask = () => {
+    
 }
 
 const deleteTask = (e) => {
