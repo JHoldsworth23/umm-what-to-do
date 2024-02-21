@@ -1,3 +1,12 @@
+const editTaskEvents = (editBtn, deleteBtn) => {
+    editBtn.addEventListener('click', showEditTaskForm);
+    deleteBtn.addEventListener('click', () => {console.log('delete this task')});
+}
+
+const editTaskFormEvents = () => {
+
+}
+
 const editTaskForm = () => {
     const rightPanel = document.querySelector('.right-panel');
     const editTaskForm = document.createElement('form');
@@ -8,24 +17,24 @@ const editTaskForm = () => {
     editTaskForm.innerHTML = `
         <div class="edit-form-task-input">
             <label for="edit-task-title">New Task Title:</label>
-            <input type="text" id="edit-task-title" name="new-task" maxlength="25">
+            <input type="text" id="edit-task-title" maxlength="25">
             <p class="blank-error">You can't make the task title blank</p>
         </div>
         <div class="edit-form-task-input">
             <label for="edit-description">New Details (Optional):</label>
-            <textarea id="edit-description" name="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..."></textarea>
+            <textarea id="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..."></textarea>
         </div>
         <div class="edit-form-task-input">
-                <input type="radio" id="low" name="priority" value="low" required>
+                <input type="radio" id="low" value="low" required>
                 <label for="low">Low</label>
-                <input type="radio" id="medium" name="priority" value="medium" required>
+                <input type="radio" id="medium" value="medium" required>
                 <label for="medium">Medium</label>
-                <input type="radio" id="high" name="priority" value="high" required>
+                <input type="radio" id="high" value="high" required>
                 <label for="high">High</label>
         </div>
         <div class="edit-form-task-input">
-            <label for="due-date">New Date:</label>
-            <input type="date" id="due-date" name="deadline" required>
+            <label for="edit-due-date">New Date:</label>
+            <input type="date" id="edit-due-date" required>
         </div>
         <div class="edit-task-form-buttons">
             <input type="button" class="edit-submit-btn" value="Edit Task">
@@ -36,4 +45,29 @@ const editTaskForm = () => {
     rightPanel.appendChild(editTaskForm);
 }
 
-export default editTaskForm;
+const showEditTaskForm = (e) => {
+    const editTaskButtons = e.target.parentNode;
+    const taskDiv = editTaskButtons.parentNode;
+
+    placeEditTaskForm(taskDiv);
+    taskDiv.classList.add('hidden');
+}
+
+const placeEditTaskForm = (selectedTask) => {
+    const rightPanel = document.querySelector('.right-panel');
+    const todoListDiv = document.querySelector('.todo-list');
+    const editTaskForm = document.querySelector('#edit-task-form');
+
+    const taskName = selectedTask.querySelector('.task-title').textContent;
+    const priority = selectedTask.querySelector('input + p').textContent;
+    const taskDetails = selectedTask.querySelector('.details').textContent;
+    
+    const nameInput = editTaskForm.querySelector('#edit-task-title');
+    nameInput.value = taskName;
+    nameInput.focus();
+
+    editTaskForm.classList.remove('hidden');
+    rightPanel.insertBefore(editTaskForm, todoListDiv);
+}
+
+export { editTaskForm, editTaskEvents };
