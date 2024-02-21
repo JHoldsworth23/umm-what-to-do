@@ -31,6 +31,7 @@ const renameProjectForm = () => {
         <div>
             <i class="fa-solid fa-list"></i>
             <input type="text" id="rename-project" maxlength="20">
+            <p class="rename-error hidden">You can't make the project title to be blank</p>
         </div>
         <div class="rename-buttons">
             <input type="button" class="rename-btn" value="Rename">
@@ -45,14 +46,20 @@ const processRenameInput = () => {
     const selectedPanel = document.querySelector('.panel.hidden');
     const projectName = selectedPanel.querySelector('.project-name');
     const renameInput = document.querySelector('#rename-project').value;
-    projectName.textContent = renameInput;
+    const errorMessage = document.querySelector('.rename-error');
 
-    const projectId = selectedPanel.dataset.projectid;
-    defaultProjects[projectId].name = renameInput;
+    if (renameInput === "") {
+        errorMessage.classList.remove('hidden');
+    } else {
+        projectName.textContent = renameInput;
+        const projectId = selectedPanel.dataset.projectid;
+        defaultProjects[projectId].name = renameInput;
 
-    selectedPanel.classList.remove('hidden');
-    updateTaskTitle(projectName.textContent);
-    hideRenameForm()
+        selectedPanel.classList.remove('hidden');
+        errorMessage.classList.add('hidden');
+        updateTaskTitle(projectName.textContent);
+        hideRenameForm();
+    }
 }
 
 const showRenameForm = (e) => {
@@ -71,6 +78,9 @@ const showRenameForm = (e) => {
 const hideRenameForm = () => {
     const renameForm = document.getElementById('rename-project-form');
     renameForm.classList.add('hidden');
+
+    const errorMessage = document.querySelector('.rename-error');
+    if (!errorMessage.classList.contains('hidden')) errorMessage.classList.add('hidden');
 }
 
 const checkRenameFormExist = () => {
