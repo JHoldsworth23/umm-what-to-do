@@ -58,6 +58,12 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     title.textContent = taskTitle;
     taskLeftDiv.appendChild(title);
 
+    const description = document.createElement('p');
+    description.classList.add('task-description');
+    description.classList.add('hidden');
+    description.textContent = details;
+    taskLeftDiv.appendChild(description);
+
     const taskBtns = document.createElement('div');
     taskBtns.classList.add('task-btns');
 
