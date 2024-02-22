@@ -29,11 +29,11 @@ const editTaskForm = () => {
             <textarea id="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..."></textarea>
         </div>
         <div class="edit-form-task-input">
-                <input type="radio" id="low" value="low" required>
+                <input type="radio" name="edit-priority" id="low" value="low" required>
                 <label for="low">Low</label>
-                <input type="radio" id="medium" value="medium" required>
+                <input type="radio" name="edit-priority" id="medium" value="medium" required>
                 <label for="medium">Medium</label>
-                <input type="radio" id="high" value="high" required>
+                <input type="radio" name="edit-priority" id="high" value="high" required>
                 <label for="high">High</label>
         </div>
         <div class="edit-form-task-input">
@@ -74,8 +74,10 @@ const placeEditTaskForm = (selectedTask) => {
     nameInput.value = taskName;
     nameInput.focus();
 
-    const priorityInput = editTaskForm.querySelectorAll('input[type="radio"]');
-    console.log(priorityInput);
+    const priorityInput = Array.from(editTaskForm.querySelectorAll('input[type="radio"]'));
+    priorityInput.forEach(input => {
+        if (input.id === priority) input.checked = true
+    });
 
     editTaskForm.classList.remove('hidden');
     rightPanel.insertBefore(editTaskForm, todoListDiv);
