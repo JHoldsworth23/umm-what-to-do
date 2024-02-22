@@ -1,5 +1,5 @@
 import { defaultProjects } from "./project";
-const { addDays, subDays } = require('date-fns');
+const { addDays, subDays, formatISO } = require('date-fns');
 
 const editTaskEvents = (editBtn, deleteBtn) => {
     editBtn.addEventListener('click', showEditTaskForm);
@@ -81,8 +81,10 @@ const placeEditTaskForm = (selectedTask) => {
         if (input.id === priority) input.checked = true
     });
 
+    const dueDateInput = editTaskForm.querySelector('#edit-due-date');
     const formattedDate = findFormattedDate(dueDate);
     console.log(formattedDate);
+    dueDateInput.value = formattedDate;
 
     editTaskForm.classList.remove('hidden');
     rightPanel.insertBefore(editTaskForm, todoListDiv);
@@ -90,8 +92,11 @@ const placeEditTaskForm = (selectedTask) => {
 
 const findFormattedDate = (dueDateString) => {
     const days = dueDateString.replace(/\D+/g, '');
-    if (dueDateString.includes('overdue')) return subDays(new Date(), days);
-    if (dueDateString.includes('Today')) return new Date();
+    const today = new Date();
+    let date = '';
+    if (dueDateString.includes('overdue')) date = subDays(today.toISOString(), days);
+    if (dueDateString.includes('Today')) date = today;
+    return formatISO(date).split('T')[0];
 }
 
 const displayHiddenTask = () => {
