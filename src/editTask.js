@@ -69,7 +69,7 @@ const placeEditTaskForm = (selectedTask) => {
 
     const taskName = selectedTask.querySelector('.task-title').textContent;
     const priority = selectedTask.querySelector('input + p').textContent;
-    const taskDetails = selectedTask.querySelector('.details').textContent;
+    const taskDetails = selectedTask.querySelector('.task-description').textContent;
     const dueDate = selectedTask.querySelector('.date').textContent;
     
     const nameInput = editTaskForm.querySelector('#edit-task-title');
@@ -80,6 +80,9 @@ const placeEditTaskForm = (selectedTask) => {
     priorityInput.forEach(input => {
         if (input.id === priority) input.checked = true
     });
+
+    const detailsInput = editTaskForm.querySelector('#edit-description');
+    detailsInput.value = taskDetails;
 
     const dueDateInput = editTaskForm.querySelector('#edit-due-date');
     dueDateInput.value = findFormattedDate(dueDate);
