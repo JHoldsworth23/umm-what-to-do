@@ -49,7 +49,7 @@ const createTaskForm = () => {
         </div>
         <div class="form-task-input">
             <label for="description">Details (Optional):</label>
-            <textarea id="description" name="task-description" rows="5" cols="40" placeholder="A short description or a checklist..."></textarea>
+            <textarea id="description" name="task-description" rows="3" cols="40" placeholder="A short description or a checklist..."></textarea>
         </div>
         <div class="form-task-input">
                 <input type="radio" id="low" name="priority" value="low" required>
