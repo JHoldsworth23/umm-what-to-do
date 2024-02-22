@@ -1,5 +1,5 @@
 import { defaultProjects } from "./project";
-const { addDays, subDays, formatISO } = require('date-fns');
+const { subDays, formatISO } = require('date-fns');
 
 const editTaskEvents = (editBtn, deleteBtn) => {
     editBtn.addEventListener('click', showEditTaskForm);
@@ -82,9 +82,7 @@ const placeEditTaskForm = (selectedTask) => {
     });
 
     const dueDateInput = editTaskForm.querySelector('#edit-due-date');
-    const formattedDate = findFormattedDate(dueDate);
-    console.log(formattedDate);
-    dueDateInput.value = formattedDate;
+    dueDateInput.value = findFormattedDate(dueDate);
 
     editTaskForm.classList.remove('hidden');
     rightPanel.insertBefore(editTaskForm, todoListDiv);
@@ -93,9 +91,12 @@ const placeEditTaskForm = (selectedTask) => {
 const findFormattedDate = (dueDateString) => {
     const days = dueDateString.replace(/\D+/g, '');
     const today = new Date();
-    let date = '';
+    let date = today;
     if (dueDateString.includes('overdue')) date = subDays(today.toISOString(), days);
-    if (dueDateString.includes('Today')) date = today;
+    if (dueDateString.includes('in')) {
+        const futureDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + +days);
+        date = futureDate.toISOString();
+    }
     return formatISO(date).split('T')[0];
 }
 
