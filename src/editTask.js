@@ -74,12 +74,15 @@ const placeEditTaskForm = (selectedTask) => {
     nameInput.value = taskName;
     nameInput.focus();
 
+    const priorityInput = editTaskForm.querySelectorAll('input[type="radio"]');
+    console.log(priorityInput);
+
     editTaskForm.classList.remove('hidden');
     rightPanel.insertBefore(editTaskForm, todoListDiv);
 }
 
 const displayHiddenTask = () => {
-    
+
 }
 
 const deleteTask = (e) => {
