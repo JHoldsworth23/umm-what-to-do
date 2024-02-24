@@ -53,23 +53,27 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     priorityStatus.textContent = priority;
     taskLeftDiv.appendChild(priorityStatus);
 
+    const textDiv = document.createElement('div');
+    textDiv.classList.add('task-text');
+
     const title = document.createElement('p');
     title.classList.add('task-title');
     title.textContent = taskTitle;
-    taskLeftDiv.appendChild(title);
+    textDiv.appendChild(title);
 
     const description = document.createElement('p');
     description.classList.add('task-description');
     description.classList.add('hidden');
     description.textContent = details;
-    taskLeftDiv.appendChild(description);
+    textDiv.appendChild(description);
+    taskLeftDiv.appendChild(textDiv);
 
     const taskBtns = document.createElement('div');
     taskBtns.classList.add('task-btns');
 
     const detailsBtn = document.createElement('button');
     detailsBtn.classList.add('details');
-    detailsBtn.textContent = 'Details';
+    detailsBtn.textContent = 'Show this Description';
     taskBtns.appendChild(detailsBtn);
 
     const date = document.createElement('p');
@@ -86,7 +90,7 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     deleteIcon.setAttribute('class', 'task-icon fa-solid fa-trash');
     taskBtns.appendChild(deleteIcon);
 
-    editTaskEvents(editIcon, deleteIcon);
+    editTaskEvents(taskBtns, editIcon, deleteIcon);
 
     taskDiv.appendChild(taskLeftDiv);
     taskDiv.appendChild(taskBtns);
