@@ -1,4 +1,5 @@
-import { defaultProjects, hideAddTaskBtn } from "./project";
+import { defaultProjects } from "./project";
+import { checkDate } from "./task";
 const { subDays, formatISO } = require('date-fns');
 
 const editTaskEvents = (showDetailsBtn, editBtn, deleteBtn) => {
@@ -9,8 +10,12 @@ const editTaskEvents = (showDetailsBtn, editBtn, deleteBtn) => {
 
 const editTaskFormEvents = () => {
     const editTaskBtn = document.querySelector('.edit-submit-btn');
+    editTaskBtn.addEventListener('click', (e) => {
+        processTaskInputs();
+        e.preventDefault();
+    });
 
-    const cancelBtn = document.querySelector('.edit-cancel-btn');
+    // const cancelBtn = document.querySelector('.edit-cancel-btn');
 }
 
 const editTaskForm = () => {
@@ -28,7 +33,7 @@ const editTaskForm = () => {
         </div>
         <div class="edit-form-task-input">
             <label for="edit-description">New Details (Optional):</label>
-            <textarea id="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..."></textarea>
+            <textarea id="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..." value=""></textarea>
         </div>
         <div class="edit-form-task-input">
                 <input type="radio" name="edit-priority" id="low" value="low" required>
@@ -52,7 +57,22 @@ const editTaskForm = () => {
 }
 
 const processTaskInputs = () => {
+    const selectedTask = document.querySelector('.task.hidden');
 
+    const taskTitleInput = document.querySelector('#edit-task-title').value;
+    // const detailsInput = document.querySelector('#edit-task-description');
+    const dateInput = document.querySelector('#edit-due-date').value;
+    const priorityInput = document.querySelector('input[name="edit-priority"]:checked').value;
+    const taskId = selectedTask.id;
+    const taskToBeEdited = findTaskInProject(taskId);
+
+    taskToBeEdited.title = taskTitleInput;
+    // taskToBeEdited.details = detailsInput.value ? detailsInput : "";
+    taskToBeEdited.priority = priorityInput;
+    taskToBeEdited.dueDate = checkDate(dateInput);
+
+    hideEditTaskForm();
+    selectedTask.classList.remove('hidden');
 }
 
 const showOrHideDescription = (e) => {
@@ -72,6 +92,11 @@ const showEditTaskForm = (e) => {
 
     placeEditTaskForm(taskDiv);
     taskDiv.classList.add('hidden');
+}
+
+const hideEditTaskForm = () => {
+    const editTaskForm = document.querySelector('#edit-task-form');
+    editTaskForm.classList.add('hidden');
 }
 
 const placeEditTaskForm = (selectedTask) => {
@@ -115,10 +140,6 @@ const findFormattedDate = (dueDateString) => {
     return formatISO(date).split('T')[0];
 }
 
-const displayHiddenTask = () => {
-    
-}
-
 const deleteTask = (e) => {
     const task = e.target.closest('.task');
     const taskId = task.id;
@@ -138,4 +159,4 @@ const findTaskInProject = (id) => {
     return selectedTask;
 }
 
-export { editTaskForm, editTaskEvents };
+export { editTaskForm, editTaskEvents, editTaskFormEvents };
