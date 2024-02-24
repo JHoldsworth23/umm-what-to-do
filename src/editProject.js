@@ -48,9 +48,7 @@ const processRenameInput = () => {
     const renameInput = document.querySelector('#rename-project').value;
     const errorMessage = document.querySelector('.rename-error');
 
-    if (renameInput === "") {
-        errorMessage.classList.remove('hidden');
-    } else {
+    if (renameInput) {
         projectName.textContent = renameInput;
         const projectId = selectedPanel.dataset.projectid;
         defaultProjects[projectId].name = renameInput;
@@ -59,6 +57,8 @@ const processRenameInput = () => {
         errorMessage.classList.add('hidden');
         updateTaskTitle(projectName.textContent);
         hideRenameForm();
+    } else {
+        errorMessage.classList.remove('hidden');
     }
 }
 
