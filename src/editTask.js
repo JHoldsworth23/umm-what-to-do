@@ -1,7 +1,8 @@
-import { defaultProjects } from "./project";
+import { defaultProjects, hideAddTaskBtn } from "./project";
 const { subDays, formatISO } = require('date-fns');
 
-const editTaskEvents = (editBtn, deleteBtn) => {
+const editTaskEvents = (showDetailsBtn, editBtn, deleteBtn) => {
+    showDetailsBtn.addEventListener('click', showDescription)
     editBtn.addEventListener('click', showEditTaskForm);
     deleteBtn.addEventListener('click', deleteTask);
 }
@@ -54,6 +55,23 @@ const processTaskInputs = () => {
 
 }
 
+const showDescription = () => {
+    const descriptionPara = document.querySelector('.task-description');
+    descriptionPara.classList.remove('hidden');
+
+    const descriptionBtn = document.querySelector('.details')
+    descriptionBtn.remove();
+    
+    const closeDescriptionBtn = document.createElement('button');
+    closeDescriptionBtn.classList.add('details');
+    closeDescriptionBtn.textContent = 'Close the Description';
+
+    const taskBtnsDiv = document.querySelector('.task-btns');
+    const datePara = document.querySelector('.date');
+
+    taskBtnsDiv.insertBefore(closeDescriptionBtn, datePara);
+}
+
 const showEditTaskForm = (e) => {
     const editTaskButtons = e.target.parentNode;
     const taskDiv = editTaskButtons.parentNode;
@@ -104,7 +122,7 @@ const findFormattedDate = (dueDateString) => {
 }
 
 const displayHiddenTask = () => {
-
+    
 }
 
 const deleteTask = (e) => {
@@ -126,4 +144,4 @@ const findTaskInProject = (id) => {
     return selectedTask;
 }
 
-export { editTaskForm, editTaskEvents };
+export { editTaskForm, editTaskEvents, showDescription };
