@@ -189,4 +189,4 @@ const updateTaskTitle = (newTitle) => {
     title.textContent = newTitle;
 }
 
-export { taskEvent, displayTask, addTask, updateTaskTitle };
+export { taskEvent, displayTask, addTask, updateTaskTitle, checkDate };
