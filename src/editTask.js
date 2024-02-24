@@ -2,7 +2,7 @@ import { defaultProjects, hideAddTaskBtn } from "./project";
 const { subDays, formatISO } = require('date-fns');
 
 const editTaskEvents = (showDetailsBtn, editBtn, deleteBtn) => {
-    showDetailsBtn.addEventListener('click', showDescription)
+    showDetailsBtn.addEventListener('click', showOrHideDescription);
     editBtn.addEventListener('click', showEditTaskForm);
     deleteBtn.addEventListener('click', deleteTask);
 }
@@ -55,21 +55,15 @@ const processTaskInputs = () => {
 
 }
 
-const showDescription = () => {
-    const descriptionPara = document.querySelector('.task-description');
-    descriptionPara.classList.remove('hidden');
+const showOrHideDescription = (e) => {
+    const selectedTask = e.target.closest('.task');
+    const descriptionPara = selectedTask.querySelector('.task-description');
+    descriptionPara.classList.toggle('hidden');
 
-    const descriptionBtn = document.querySelector('.details')
-    descriptionBtn.remove();
-    
-    const closeDescriptionBtn = document.createElement('button');
-    closeDescriptionBtn.classList.add('details');
-    closeDescriptionBtn.textContent = 'Close the Description';
-
-    const taskBtnsDiv = document.querySelector('.task-btns');
-    const datePara = document.querySelector('.date');
-
-    taskBtnsDiv.insertBefore(closeDescriptionBtn, datePara);
+    const descriptionBtn = selectedTask.querySelector('.details');
+    descriptionBtn.textContent = descriptionBtn.textContent.includes('Show') 
+        ? 'Close this Description' 
+        :  'Show this Description';
 }
 
 const showEditTaskForm = (e) => {
@@ -144,4 +138,4 @@ const findTaskInProject = (id) => {
     return selectedTask;
 }
 
-export { editTaskForm, editTaskEvents, showDescription };
+export { editTaskForm, editTaskEvents };
