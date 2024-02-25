@@ -15,7 +15,11 @@ const editTaskFormEvents = () => {
         e.preventDefault();
     });
 
-    // const cancelBtn = document.querySelector('.edit-cancel-btn');
+    const cancelBtn = document.querySelector('.edit-cancel-btn');
+    cancelBtn.addEventListener('click', () => {
+        hideEditTaskForm();
+        displayHiddenTask();
+    });
 }
 
 const editTaskForm = () => {
@@ -33,7 +37,7 @@ const editTaskForm = () => {
         </div>
         <div class="edit-form-task-input">
             <label for="edit-description">New Details (Optional):</label>
-            <textarea id="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..." value=""></textarea>
+            <textarea id="edit-description" rows="1" cols="40" placeholder="A short description or a checklist..."></textarea>
         </div>
         <div class="edit-form-task-input">
                 <input type="radio" name="edit-priority" id="low" value="low" required>
@@ -60,7 +64,7 @@ const processTaskInputs = () => {
     const selectedTask = document.querySelector('.task.hidden');
 
     const taskTitleInput = document.querySelector('#edit-task-title').value;
-    const detailsInput = document.querySelector('#edit-task-description');
+    const detailsInput = document.querySelector('#edit-description');
     const dateInput = document.querySelector('#edit-due-date').value;
     const priorityInput = document.querySelector('input[name="edit-priority"]:checked').value;
     const taskId = selectedTask.id;
@@ -71,7 +75,7 @@ const processTaskInputs = () => {
     taskToBeEdited.priority = priorityInput;
     taskToBeEdited.dueDate = checkDate(dateInput);
 
-    selectedTask.classList.remove('hidden');
+    displayHiddenTask();
     hideEditTaskForm();
 
     const projectId = taskToBeEdited.projectId;
@@ -81,6 +85,11 @@ const processTaskInputs = () => {
 const refreshTaskDisplay = (project) => {
     const selectedProjectPanel = document.querySelector('.projects .selected');
     if (selectedProjectPanel) displayTask(project);
+}
+
+const displayHiddenTask = () => {
+    const selectedTask = document.querySelector('.task.hidden');
+    selectedTask.classList.remove('hidden');
 }
 
 const showOrHideDescription = (e) => {
