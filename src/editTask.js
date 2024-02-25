@@ -1,5 +1,5 @@
 import { defaultProjects } from "./project";
-import { checkDate } from "./task";
+import { checkDate, displayTask } from "./task";
 const { subDays, formatISO } = require('date-fns');
 
 const editTaskEvents = (showDetailsBtn, editBtn, deleteBtn) => {
@@ -71,8 +71,16 @@ const processTaskInputs = () => {
     taskToBeEdited.priority = priorityInput;
     taskToBeEdited.dueDate = checkDate(dateInput);
 
-    hideEditTaskForm();
     selectedTask.classList.remove('hidden');
+    hideEditTaskForm();
+
+    const projectId = taskToBeEdited.projectId;
+    refreshTaskDisplay(projectId);
+}
+
+const refreshTaskDisplay = (project) => {
+    const selectedProjectPanel = document.querySelector('.projects .selected');
+    if (selectedProjectPanel) displayTask(project);
 }
 
 const showOrHideDescription = (e) => {
