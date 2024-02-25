@@ -72,7 +72,8 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     taskBtns.classList.add('task-btns');
 
     const detailsBtn = document.createElement('button');
-    detailsBtn.classList.add('details');
+    detailsBtn.classList.add('details')
+    if (!details) detailsBtn.classList.add('hidden'); ;
     detailsBtn.textContent = 'Show this Description';
     taskBtns.appendChild(detailsBtn);
 
