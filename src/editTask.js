@@ -60,14 +60,14 @@ const processTaskInputs = () => {
     const selectedTask = document.querySelector('.task.hidden');
 
     const taskTitleInput = document.querySelector('#edit-task-title').value;
-    // const detailsInput = document.querySelector('#edit-task-description');
+    const detailsInput = document.querySelector('#edit-task-description');
     const dateInput = document.querySelector('#edit-due-date').value;
     const priorityInput = document.querySelector('input[name="edit-priority"]:checked').value;
     const taskId = selectedTask.id;
     const taskToBeEdited = findTaskInProject(taskId);
 
     taskToBeEdited.title = taskTitleInput;
-    // taskToBeEdited.details = detailsInput.value ? detailsInput : "";
+    taskToBeEdited.details = detailsInput ? detailsInput.value : "";
     taskToBeEdited.priority = priorityInput;
     taskToBeEdited.dueDate = checkDate(dateInput);
 
@@ -91,7 +91,7 @@ const showOrHideDescription = (e) => {
     const descriptionBtn = selectedTask.querySelector('.details');
     descriptionBtn.textContent = descriptionBtn.textContent.includes('Show') 
         ? 'Close this Description' 
-        :  'Show this Description';
+        : 'Show this Description';
 }
 
 const showEditTaskForm = (e) => {
