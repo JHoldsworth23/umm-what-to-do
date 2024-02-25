@@ -39,39 +39,30 @@ const createProjectsDiv = () => {
     projectDiv.classList.add('projects');
     projectDiv.innerHTML = '<h2>Projects</h2>';
 
-    const allTasksDiv = document.createElement('div');
-    allTasksDiv.setAttribute('class', 'panel selected');
-    allTasksDiv.id = 'all-tasks';
-    allTasksDiv.innerHTML = '<i class="fa-solid fa-list-ul"></i><p>All Tasks</p>';
-    homeProjects.appendChild(allTasksDiv);
+    const homePanels = [
+        {id: 'all-tasks', html: '<i class="fa-solid fa-list-ul"></i><p>All Tasks</p>'},
+        {id: 'today-tasks', html: '<i class="fa-solid fa-calendar-day"></i><p>Today</p>'},
+        {id: 'seven-days', html: '<i class="fa-solid fa-calendar-week"></i><p>In 7 Days</p>'},
+        {id: 'overdue-tasks', html: '<i class="fa-solid fa-triangle-exclamation"></i><p>Overdue Tasks</p>'},
+        {id: 'high-priority', html: '<i class="fa-solid fa-circle-exclamation"></i><p>High Priority Tasks</p>'}
+    ];
 
-    const todayTasksDiv = document.createElement('div');
-    todayTasksDiv.classList.add('panel');
-    todayTasksDiv.id = 'today-tasks';
-    todayTasksDiv.innerHTML = '<i class="fa-solid fa-calendar-day"></i><p>Today</p>';
-    homeProjects.appendChild(todayTasksDiv);
-
-    const weekTasksDiv = document.createElement('div');
-    weekTasksDiv.classList.add('panel');
-    weekTasksDiv.id = 'seven-days';
-    weekTasksDiv.innerHTML = '<i class="fa-solid fa-calendar-week"></i><p>In 7 Days</p>';
-    homeProjects.appendChild(weekTasksDiv);
-
-    const overdueDiv = document.createElement('div');
-    overdueDiv.classList.add('panel');
-    overdueDiv.id = 'overdue-tasks';
-    overdueDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i><p>Overdue Tasks</p>';
-    homeProjects.appendChild(overdueDiv);
-
-    const highPriorityTasksDiv = document.createElement('div');
-    highPriorityTasksDiv.classList.add('panel');
-    highPriorityTasksDiv.id = 'high-priority';
-    highPriorityTasksDiv.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i><p>High Priority Tasks</p>';
-    homeProjects.appendChild(highPriorityTasksDiv);
+    homePanels.forEach(panel => {
+        createHomePanels(homeProjects, panel.id, panel.html);
+    });
 
     sidebar.appendChild(homeProjects);
     sidebar.appendChild(projectDiv);
     projectFormButton();
+}
+
+const createHomePanels = (home, id, html) => {
+    const panel = document.createElement('div');
+    panel.classList.add('panel');
+    if (id === 'all-tasks') panel.classList.add('selected');
+    panel.id = id;
+    panel.innerHTML = html;
+    home.appendChild(panel);
 }
 
 const createTaskDiv = () => {
