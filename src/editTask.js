@@ -102,17 +102,29 @@ const showOrHideDescription = (e) => {
     const editTaskForm = document.querySelector('#edit-task-form');
     const descriptionPara = selectedTask.querySelector('.task-description');
 
-    if (editTaskForm.classList.contains('hidden')) descriptionPara.classList.toggle('hidden');
+    if (editTaskForm.classList.contains('hidden')) {
+        descriptionPara.classList.toggle('hidden');
 
-    const descriptionBtn = selectedTask.querySelector('.details');
-    descriptionBtn.textContent = descriptionBtn.textContent.includes('Show') 
-        ? 'Close this Description' 
-        : 'Show this Description';
+        const descriptionBtn = selectedTask.querySelector('.details');
+        descriptionBtn.textContent = descriptionBtn.textContent.includes('Show') 
+            ? 'Close this Description' 
+            : 'Show this Description';
+    }
+}
+
+const checkEditTaskFormExist = () => {
+    const editTaskForm = document.querySelector('#edit-task-form');
+    return editTaskForm.classList.contains('hidden') ? false : true;
 }
 
 const showEditTaskForm = (e) => {
     const editTaskButtons = e.target.parentNode;
     const taskDiv = editTaskButtons.parentNode;
+
+    if (checkEditTaskFormExist()) {
+        hideEditTaskForm();
+        displayHiddenTask();
+    }
 
     placeEditTaskForm(taskDiv);
     taskDiv.classList.add('hidden');
