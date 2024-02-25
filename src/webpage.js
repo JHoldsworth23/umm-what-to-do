@@ -57,6 +57,12 @@ const createProjectsDiv = () => {
     weekTasksDiv.innerHTML = '<i class="fa-solid fa-calendar-week"></i><p>In 7 Days</p>';
     homeProjects.appendChild(weekTasksDiv);
 
+    const overdueDiv = document.createElement('div');
+    overdueDiv.classList.add('panel');
+    overdueDiv.id = 'overdue-tasks';
+    overdueDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i><p>Overdue Tasks</p>';
+    homeProjects.appendChild(overdueDiv);
+
     const highPriorityTasksDiv = document.createElement('div');
     highPriorityTasksDiv.classList.add('panel');
     highPriorityTasksDiv.id = 'high-priority';
