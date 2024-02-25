@@ -94,8 +94,10 @@ const displayHiddenTask = () => {
 
 const showOrHideDescription = (e) => {
     const selectedTask = e.target.closest('.task');
+    const editTaskForm = document.querySelector('#edit-task-form');
     const descriptionPara = selectedTask.querySelector('.task-description');
-    descriptionPara.classList.toggle('hidden');
+
+    if (editTaskForm.classList.contains('hidden')) descriptionPara.classList.toggle('hidden');
 
     const descriptionBtn = selectedTask.querySelector('.details');
     descriptionBtn.textContent = descriptionBtn.textContent.includes('Show') 
