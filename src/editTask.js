@@ -33,7 +33,7 @@ const editTaskForm = () => {
         <div class="edit-form-task-input">
             <label for="edit-task-title">New Task Title:</label>
             <input type="text" id="edit-task-title" maxlength="25">
-            <p class="blank-error">You can't make the task title blank</p>
+            <p class="blank-error hidden">You can't make the task title blank</p>
         </div>
         <div class="edit-form-task-input">
             <label for="edit-description">New Details (Optional):</label>
@@ -62,6 +62,7 @@ const editTaskForm = () => {
 
 const processTaskInputs = () => {
     const selectedTask = document.querySelector('.task.hidden');
+    const blankError = document.querySelector('.blank-error');
 
     const taskTitleInput = document.querySelector('#edit-task-title').value;
     const detailsInput = document.querySelector('#edit-description');
@@ -70,16 +71,20 @@ const processTaskInputs = () => {
     const taskId = selectedTask.id;
     const taskToBeEdited = findTaskInProject(taskId);
 
-    taskToBeEdited.title = taskTitleInput;
-    taskToBeEdited.details = detailsInput ? detailsInput.value : "";
-    taskToBeEdited.priority = priorityInput;
-    taskToBeEdited.dueDate = checkDate(dateInput);
+    if (taskTitleInput) {
+        taskToBeEdited.title = taskTitleInput;
+        taskToBeEdited.details = detailsInput ? detailsInput.value : "";
+        taskToBeEdited.priority = priorityInput;
+        taskToBeEdited.dueDate = checkDate(dateInput);
 
-    displayHiddenTask();
-    hideEditTaskForm();
+        displayHiddenTask();
+        hideEditTaskForm();
 
-    const projectId = taskToBeEdited.projectId;
-    refreshTaskDisplay(projectId);
+        const projectId = taskToBeEdited.projectId;
+        refreshTaskDisplay(projectId);
+    } else {
+        blankError.classList.remove('hidden');
+    }
 }
 
 const refreshTaskDisplay = (project) => {
@@ -116,6 +121,9 @@ const showEditTaskForm = (e) => {
 const hideEditTaskForm = () => {
     const editTaskForm = document.querySelector('#edit-task-form');
     editTaskForm.classList.add('hidden');
+
+    const blankError = document.querySelector('.blank-error');
+    if (!blankError.classList.contains('hidden')) blankError.classList.add('hidden');
 }
 
 const placeEditTaskForm = (selectedTask) => {
