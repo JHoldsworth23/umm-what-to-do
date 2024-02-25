@@ -54,7 +54,6 @@ const processRenameInput = () => {
         defaultProjects[projectId].name = renameInput;
 
         selectedPanel.classList.remove('hidden');
-        errorMessage.classList.add('hidden');
         updateTaskTitle(projectName.textContent);
         hideRenameForm();
     } else {
