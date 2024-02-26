@@ -101,4 +101,4 @@ const displayNoTask = () => {
     todoList.appendChild(noTaskTitle);
 }
 
-export { selectedHomePanel };
+export { selectedHomePanel, displayAllTasks };
