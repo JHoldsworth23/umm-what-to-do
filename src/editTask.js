@@ -3,7 +3,10 @@ import { checkDate, displayTask } from "./task";
 const { subDays, formatISO } = require('date-fns');
 
 const editTaskEvents = (checkbox, showDetailsBtn, editBtn, deleteBtn) => {
-    checkbox.addEventListener('click', styleCompletedTask);
+    checkbox.addEventListener('click', (e) => {
+        styleCompletedTask(e);
+        updateCompletedTask(e);
+    });
     showDetailsBtn.addEventListener('click', showOrHideDescription);
     editBtn.addEventListener('click', showEditTaskForm);
     deleteBtn.addEventListener('click', deleteTask);
