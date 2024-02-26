@@ -33,6 +33,12 @@ const styleCompletedTask = (e) => {
     uncompletedTask.classList.toggle('checked');
 }
 
+const updateCompletedTask = (e) => {
+    const taskId = e.target.closest('.task').id;
+    const selectedTask = findTaskInProject(taskId);
+    selectedTask.completed = !selectedTask.completed;
+}
+
 const editTaskForm = () => {
     const rightPanel = document.querySelector('.right-panel');
     const editTaskForm = document.createElement('form');
