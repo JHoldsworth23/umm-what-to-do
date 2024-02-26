@@ -2,7 +2,8 @@ import { defaultProjects } from "./project";
 import { checkDate, displayTask } from "./task";
 const { subDays, formatISO } = require('date-fns');
 
-const editTaskEvents = (showDetailsBtn, editBtn, deleteBtn) => {
+const editTaskEvents = (checkbox, showDetailsBtn, editBtn, deleteBtn) => {
+    checkbox.addEventListener('click', styleCompletedTask);
     showDetailsBtn.addEventListener('click', showOrHideDescription);
     editBtn.addEventListener('click', showEditTaskForm);
     deleteBtn.addEventListener('click', deleteTask);
@@ -20,6 +21,16 @@ const editTaskFormEvents = () => {
         hideEditTaskForm();
         displayHiddenTask();
     });
+}
+
+const styleCompletedTask = (e) => {
+    const uncompletedTask = e.target;
+    const task = e.target.closest('.task');
+    const taskDetails = task.querySelector('.task-text');
+
+    taskDetails.classList.toggle('strike-through');
+    task.classList.toggle('completed');
+    uncompletedTask.classList.toggle('checked');
 }
 
 const editTaskForm = () => {
