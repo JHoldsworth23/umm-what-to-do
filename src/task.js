@@ -91,7 +91,7 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     deleteIcon.setAttribute('class', 'task-icon fa-solid fa-trash');
     taskBtns.appendChild(deleteIcon);
 
-    editTaskEvents(taskBtns, editIcon, deleteIcon);
+    editTaskEvents(checkbox, taskBtns, editIcon, deleteIcon);
 
     taskDiv.appendChild(taskLeftDiv);
     taskDiv.appendChild(taskBtns);
