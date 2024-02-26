@@ -221,4 +221,4 @@ const findTaskInProject = (id) => {
     return selectedTask;
 }
 
-export { editTaskForm, editTaskEvents, editTaskFormEvents };
+export { editTaskForm, editTaskEvents, editTaskFormEvents, findFormattedDate };
