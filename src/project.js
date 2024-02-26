@@ -1,4 +1,5 @@
 import { editProjectEvents } from "./editProject";
+import { selectedHomePanel } from "./homePanels";
 import { displayTask, updateTaskTitle } from "./task";
 
 let defaultProjects = [];
@@ -133,6 +134,7 @@ const checkWhichPanel = (e) => {
     if (homePanels) {
         const homeTitle = homePanels.querySelector('p').textContent;
         selectPanel(homePanels);
+        selectedHomePanel(homePanels);
         updateTaskTitle(homeTitle);
         hideAddTaskBtn();
     }

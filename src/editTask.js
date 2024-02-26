@@ -1,3 +1,4 @@
+import { selectedHomePanel } from "./homePanels";
 import { defaultProjects } from "./project";
 import { checkDate, displayTask } from "./task";
 const { subDays, formatISO } = require('date-fns');
@@ -108,8 +109,10 @@ const processTaskInputs = () => {
 }
 
 const refreshTaskDisplay = (project) => {
+    const homePanel = document.querySelector('.home .selected');
     const selectedProjectPanel = document.querySelector('.projects .selected');
     if (selectedProjectPanel) displayTask(project);
+    if (homePanel) selectedHomePanel(homePanel);
 }
 
 const displayHiddenTask = () => {
