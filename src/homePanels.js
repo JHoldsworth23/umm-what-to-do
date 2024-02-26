@@ -9,6 +9,7 @@ const selectedHomePanel = (homePanel) => {
     if (homePanel.matches('#seven-days')) displayWeekTasks();
     if (homePanel.matches('#overdue-tasks')) displayOverdueTasks();
     if (homePanel.matches('#high-priority')) displayImportantTasks();
+    checkTasks();
 }
 
 const clearList = () => {
@@ -85,6 +86,19 @@ const displayImportantTasks = () => {
             }
         });
     });
+}
+
+const checkTasks = () => {
+    const todoList = document.querySelector('.todo-list');
+    if (!todoList.innerHTML) displayNoTask();
+}
+
+const displayNoTask = () => {
+    const todoList = document.querySelector('.todo-list');
+    const noTaskTitle = document.createElement('h2');
+    noTaskTitle.classList.add('no-task');
+    noTaskTitle.textContent = 'Woohoo! No Tasks!';
+    todoList.appendChild(noTaskTitle);
 }
 
 export { selectedHomePanel };
