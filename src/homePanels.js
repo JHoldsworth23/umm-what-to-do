@@ -8,7 +8,7 @@ const selectedHomePanel = (homePanel) => {
     if (homePanel.matches('#today-tasks')) displayTodayTasks();
     if (homePanel.matches('#seven-days')) displayWeekTasks();
     if (homePanel.matches('#overdue-tasks')) displayOverdueTasks();
-    if (homePanel.matches('#high-priority')) console.log('Display Important Tasks');
+    if (homePanel.matches('#high-priority')) displayImportantTasks();
 }
 
 const clearList = () => {
@@ -65,6 +65,20 @@ const displayOverdueTasks = () => {
         project.taskList.forEach(task => {
             const deadline = task.dueDate;
             if (deadline.includes('overdue')) {
+                addTask(task.id, task.title, task.details, task.priority, task.dueDate);
+            } else {
+                return;
+            }
+        });
+    });
+}
+
+const displayImportantTasks = () => {
+    clearList();
+    defaultProjects.forEach(project => {
+        project.taskList.forEach(task => {
+            const status = task.priority;
+            if (status === 'high') {
                 addTask(task.id, task.title, task.details, task.priority, task.dueDate);
             } else {
                 return;
