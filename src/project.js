@@ -82,12 +82,18 @@ const showProjectForm = () => {
     const projectForm = document.querySelector('#project-form');
     projectForm.classList.remove('hidden');
     document.querySelector('#new-project').focus();
+
+    const addBtn = document.querySelector('#add-new-project');
+    addBtn.classList.add('hidden');
 }
 
 const hideProjectForm = () => {
     const projectForm = document.querySelector('#project-form');
     const projectInput = document.querySelector('#new-project');
     const errorMessage = document.querySelector('.error-message');
+
+    const addBtn = document.querySelector('#add-new-project');
+    addBtn.classList.remove('hidden');
 
     projectForm.classList.add('hidden');
     projectInput.value = '';
