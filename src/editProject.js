@@ -1,4 +1,4 @@
-import { hideAddTaskBtn, defaultProjects, saveLocalStorage } from "./project";
+import { hideAddTaskBtn, personalProjects, saveLocalStorage } from "./project";
 import { updateTaskTitle } from "./task";
 
 const editProjectEvents = (editBtn, deleteBtn) => {
@@ -51,7 +51,7 @@ const processRenameInput = () => {
     if (renameInput) {
         projectName.textContent = renameInput;
         const projectId = selectedPanel.dataset.projectid;
-        defaultProjects[projectId].name = renameInput;
+        personalProjects[projectId].name = renameInput;
 
         saveLocalStorage();
         selectedPanel.classList.remove('hidden');
@@ -120,7 +120,7 @@ const deleteProject = (e) => {
 
     panel.remove();
     resetIndex();
-    defaultProjects.splice(panelIndex, 1);
+    personalProjects.splice(panelIndex, 1);
     saveLocalStorage();
 }
 
@@ -131,11 +131,11 @@ const resetIndex = () => {
     panels.forEach(panel => {
         const projectId = panel.dataset.projectid;
         panel.dataset.projectid = index;
-        defaultProjects[projectId].id = index;
+        personalProjects[projectId].id = index;
         index++;
     });
 
-    defaultProjects.sort((a, b) => a.id - b.id);
+    personalProjects.sort((a, b) => a.id - b.id);
     saveLocalStorage();
 }
 

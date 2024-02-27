@@ -1,5 +1,5 @@
 import { format, isWithinInterval } from "date-fns";
-import { defaultProjects } from "./project";
+import { personalProjects } from "./project";
 import { addTask } from "./task";
 import { findFormattedDate } from "./editTask";
 
@@ -19,7 +19,7 @@ const clearList = () => {
 
 const displayAllTasks = () => {
     clearList();
-    defaultProjects.forEach(project => {
+    personalProjects.forEach(project => {
         project.taskList.forEach(task => {
             addTask(task.id, task.title, task.details, task.priority, task.dueDate);
         });
@@ -29,7 +29,7 @@ const displayAllTasks = () => {
 const displayTodayTasks = () => {
     clearList();
     const today = format(new Date(), 'yyyy-MM-dd');
-    defaultProjects.forEach(project => {
+    personalProjects.forEach(project => {
         project.taskList.forEach(task => {
             if (findFormattedDate(task.dueDate) === today) {
                 addTask(task.id, task.title, task.details, task.priority, task.dueDate);
@@ -42,7 +42,7 @@ const displayTodayTasks = () => {
 
 const displayWeekTasks = () => {
     clearList();
-    defaultProjects.forEach(project => {
+    personalProjects.forEach(project => {
         project.taskList.forEach(task => {
             const date = findFormattedDate(task.dueDate);
             if (checkNextWeek(date)) {
@@ -62,7 +62,7 @@ const checkNextWeek = (taskDate) => {
 
 const displayOverdueTasks = () => {
     clearList();
-    defaultProjects.forEach(project => {
+    personalProjects.forEach(project => {
         project.taskList.forEach(task => {
             const deadline = task.dueDate;
             if (deadline.includes('overdue')) {
@@ -76,7 +76,7 @@ const displayOverdueTasks = () => {
 
 const displayImportantTasks = () => {
     clearList();
-    defaultProjects.forEach(project => {
+    personalProjects.forEach(project => {
         project.taskList.forEach(task => {
             const status = task.priority;
             if (status === 'high') {

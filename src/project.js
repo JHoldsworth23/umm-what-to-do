@@ -1,6 +1,6 @@
 import { editProjectEvents } from "./editProject";
 import { selectedHomePanel } from "./homePanels";
-import { displayTask, updateTaskTitle } from "./task";
+import { TASKID, displayTask, updateTaskTitle } from "./task";
 
 let defaultProjects = [];
 let personalProjects = localStorage.getItem('myProject');
@@ -16,7 +16,7 @@ class Project {
 
 const saveLocalStorage = () => {
     localStorage.setItem('myProject', JSON.stringify(personalProjects));
-    localStorage.setItem('currentTaskId', (taskId).toString());
+    localStorage.setItem('currentTaskId', TASKID.toString());
 }
 
 const createEventListener = () => {
@@ -32,7 +32,7 @@ const createEventListener = () => {
     const leftPanel = document.querySelector('.left-panel');
     leftPanel.addEventListener('click', checkWhichPanel);
 
-    displayProject(defaultProjects);
+    displayProject(personalProjects);
 }
 
 const displayProject = (projectArray) => {
@@ -108,7 +108,7 @@ const processNewProject = (e) => {
 
         const projectName = textInput.value;
         const newProject = new Project(projectName);
-        defaultProjects.push(newProject);
+        personalProjects.push(newProject);
         addProject(projectIdNum, projectName);
         hideProjectForm();    
     } else {
@@ -155,4 +155,4 @@ const checkWhichPanel = (e) => {
     }
 }
 
-export { createEventListener, hideAddTaskBtn, defaultProjects, saveLocalStorage };
+export { createEventListener, hideAddTaskBtn, personalProjects, saveLocalStorage };

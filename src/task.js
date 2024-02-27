@@ -1,5 +1,5 @@
 import { editTaskEvents } from "./editTask";
-import { defaultProjects, saveLocalStorage } from "./project";
+import { personalProjects, saveLocalStorage } from "./project";
 
 let defaultId = 0;
 let TASKID = Number(localStorage.getItem('currentTaskId')) || defaultId;
@@ -30,7 +30,7 @@ const taskEvent = () => {
 const displayTask = (currentProject) => {
     const todoDiv = document.querySelector('.todo-list');
     todoDiv.textContent = '';
-    defaultProjects[currentProject].taskList.forEach(task => {
+    personalProjects[currentProject].taskList.forEach(task => {
         addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
     });
 }
@@ -166,12 +166,12 @@ const processNewTask = (e) => {
         const priority = document.querySelector('input[name="priority"]:checked');
 
         let currentProject = findCurrentProject();
-        let taskId = idCounter;
+        let taskId = TASKID;
 
         const date = checkDate(dueDate.value);
         const newTask = new Task(currentProject, taskId, title.value, details.value, priority.value, date);
-        defaultProjects[currentProject].taskList.push(newTask);
-        idCounter++;
+        personalProjects[currentProject].taskList.push(newTask);
+        TASKID++;
 
         saveLocalStorage();
         addTask(taskId, title.value, details.value, priority.value, date);
@@ -192,4 +192,4 @@ const updateTaskTitle = (newTitle) => {
     title.textContent = newTitle;
 }
 
-export { taskEvent, displayTask, addTask, updateTaskTitle, checkDate };
+export { taskEvent, displayTask, addTask, updateTaskTitle, checkDate, TASKID };

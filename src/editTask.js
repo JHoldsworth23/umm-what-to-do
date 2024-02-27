@@ -1,5 +1,5 @@
 import { selectedHomePanel } from "./homePanels";
-import { defaultProjects, saveLocalStorage } from "./project";
+import { personalProjects, saveLocalStorage } from "./project";
 import { checkDate, displayTask } from "./task";
 const { subDays, formatISO } = require('date-fns');
 
@@ -211,13 +211,13 @@ const deleteTask = (e) => {
     const taskToBeDeleted = findTaskInProject(taskId);
     const projectId = taskToBeDeleted.projectId;
 
-    defaultProjects[projectId].taskList = defaultProjects[projectId].taskList.filter(task => task != taskToBeDeleted);
+    personalProjects[projectId].taskList = personalProjects[projectId].taskList.filter(task => task != taskToBeDeleted);
     saveLocalStorage();
     task.remove();
 }
 
 const findTaskInProject = (id) => {
-    const selectedTask = defaultProjects.reduce((obj, project) => {
+    const selectedTask = personalProjects.reduce((obj, project) => {
         let currentTask = project.taskList.find(task => (task.id == id));
         if (currentTask != null) obj = currentTask;
         return obj;
