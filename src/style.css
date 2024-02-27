@@ -82,6 +82,46 @@ hr {
     color: #111111;
 }
 
+.project-inputs {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.project-inputs > input {
+    border: 2px solid #111111;
+    width: 200px;
+    font-size: 1rem;
+    margin: 6px 0;
+}
+
+.error-message {
+    color: #FF0800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0 0 4px;
+}
+
+.submit-btn, .cancel-btn {
+    font-size: 0.9rem;
+    border: 2px solid #272838;
+    border-radius: 10px;
+    padding: 2px 8px;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #228B22;
+    color: #FEFEFE;
+}
+
+.cancel-btn:hover {
+    background-color: #FF0800;
+    color: #FEFEFE;
+}
+
 /* TASKS SECTION */
 .right-panel {
     background-color: #B4B4B4;
