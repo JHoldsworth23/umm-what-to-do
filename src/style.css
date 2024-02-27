@@ -9,7 +9,7 @@ body {
 #content {
     height: 100vh;
     display: grid;
-    grid-template: 1fr 7fr 1fr / 1fr 5fr;
+    grid-template: 1fr 7fr 0.6fr / 1fr 5fr;
 }
 
 /* HEADER */
@@ -149,8 +149,7 @@ i[class*="github"]:hover {
     color: #F4D35E;
 }
 
-/* COLOUR PALETTE */
-/* 
+/* COLOUR PALETTE
 HEADER - #191A20 OR #111111
 SIDEBAR COLOUR - #272838
 PANEL SELECTED - #F3DE8A OR #F4D35E
