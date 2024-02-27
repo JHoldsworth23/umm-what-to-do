@@ -107,7 +107,7 @@ const processNewProject = (e) => {
         saveLocalStorage();
 
         const projectName = textInput.value;
-        const newProject = new Project(projectName);
+        const newProject = new Project(projectIdNum, projectName);
         personalProjects.push(newProject);
         addProject(projectIdNum, projectName);
         hideProjectForm();    
