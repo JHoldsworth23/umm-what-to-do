@@ -27,6 +27,7 @@ header {
 /* HOME AND PROJECT SECTION */
 .left-panel {
     background-color: #272838;
+    color: #FEFEFE;
     padding: 0 20px;
 }
 
@@ -46,7 +47,23 @@ header {
 /* FOOTER */
 footer {
     grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
     background-color: #111111;
+    color: #FEFEFE;
+}
+
+i[class*="github"] {
+    font-size: 1.5rem;
+    color: #7E7F9A;
+}
+
+i[class*="github"]:hover {
+    color: #F4D35E;
 }
 
 /* COLOUR PALETTE */
