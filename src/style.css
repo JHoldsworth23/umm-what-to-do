@@ -37,6 +37,11 @@ header {
     margin: 20px 12px 8px;
 }
 
+hr {
+    border-top: 0.5px solid #FEFEFE;
+    margin-top: -10px;
+}
+
 .panel {
     display: flex;
     justify-content: flex-start;
@@ -56,6 +61,25 @@ header {
 .panel > p {
     font-size: 1.25rem;
     margin: 10px 0;
+}
+
+.projects {
+    position: relative;
+}
+
+#add-new-project {
+    position: absolute;
+    transform: translateX(40%);
+    padding: 4px 16px;
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 16px;
+}
+
+#add-new-project:hover {
+    background-color: #F4D35E;
+    color: #111111;
 }
 
 /* TASKS SECTION */
