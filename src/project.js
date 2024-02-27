@@ -3,6 +3,8 @@ import { selectedHomePanel } from "./homePanels";
 import { displayTask, updateTaskTitle } from "./task";
 
 let defaultProjects = [];
+let personalProjects = localStorage.getItem('myProject');
+personalProjects = JSON.parse(personalProjects || JSON.stringify(defaultProjects));
 
 class Project {
     constructor(projectId, projectName) {
@@ -12,8 +14,10 @@ class Project {
     }
 }
 
-defaultProjects.push(new Project(0, 'Gym'));
-defaultProjects.push(new Project(1, 'Study'));
+const saveLocalStorage = () => {
+    localStorage.setItem('myProject', JSON.stringify(personalProjects));
+    localStorage.setItem('currentTaskId', (taskId).toString());
+}
 
 const createEventListener = () => {
     const addProjectBtn = document.querySelector('#add-new-project');
@@ -100,6 +104,8 @@ const processNewProject = (e) => {
         errorMessage.classList.add('hidden');
         textInput.classList.remove('invalid');
 
+        saveLocalStorage();
+
         const projectName = textInput.value;
         const newProject = new Project(projectName);
         defaultProjects.push(newProject);
@@ -149,4 +155,4 @@ const checkWhichPanel = (e) => {
     }
 }
 
-export { createEventListener, hideAddTaskBtn, defaultProjects };
+export { createEventListener, hideAddTaskBtn, defaultProjects, saveLocalStorage };
