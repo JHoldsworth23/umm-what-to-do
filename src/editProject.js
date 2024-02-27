@@ -1,4 +1,4 @@
-import { hideAddTaskBtn, defaultProjects } from "./project";
+import { hideAddTaskBtn, defaultProjects, saveLocalStorage } from "./project";
 import { updateTaskTitle } from "./task";
 
 const editProjectEvents = (editBtn, deleteBtn) => {
@@ -53,6 +53,7 @@ const processRenameInput = () => {
         const projectId = selectedPanel.dataset.projectid;
         defaultProjects[projectId].name = renameInput;
 
+        saveLocalStorage();
         selectedPanel.classList.remove('hidden');
         updateTaskTitle(projectName.textContent);
         hideRenameForm();
@@ -120,6 +121,7 @@ const deleteProject = (e) => {
     panel.remove();
     resetIndex();
     defaultProjects.splice(panelIndex, 1);
+    saveLocalStorage();
 }
 
 const resetIndex = () => {
@@ -134,6 +136,7 @@ const resetIndex = () => {
     });
 
     defaultProjects.sort((a, b) => a.id - b.id);
+    saveLocalStorage();
 }
 
 export { editProjectEvents, renameProjectEvents, renameProjectForm };

@@ -1,5 +1,5 @@
 import { selectedHomePanel } from "./homePanels";
-import { defaultProjects } from "./project";
+import { defaultProjects, saveLocalStorage } from "./project";
 import { checkDate, displayTask } from "./task";
 const { subDays, formatISO } = require('date-fns');
 
@@ -41,6 +41,8 @@ const updateCompletedTask = (e) => {
     const taskId = e.target.closest('.task').id;
     const selectedTask = findTaskInProject(taskId);
     selectedTask.completed = !selectedTask.completed;
+
+    saveLocalStorage();
 }
 
 const editTaskForm = () => {
@@ -98,6 +100,7 @@ const processTaskInputs = () => {
         taskToBeEdited.priority = priorityInput;
         taskToBeEdited.dueDate = checkDate(dateInput);
 
+        saveLocalStorage();
         displayHiddenTask();
         hideEditTaskForm();
 
@@ -209,6 +212,7 @@ const deleteTask = (e) => {
     const projectId = taskToBeDeleted.projectId;
 
     defaultProjects[projectId].taskList = defaultProjects[projectId].taskList.filter(task => task != taskToBeDeleted);
+    saveLocalStorage();
     task.remove();
 }
 

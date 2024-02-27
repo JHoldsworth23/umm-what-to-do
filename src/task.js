@@ -1,7 +1,8 @@
 import { editTaskEvents } from "./editTask";
-import { defaultProjects } from "./project";
+import { defaultProjects, saveLocalStorage } from "./project";
 
-let idCounter = 0;
+let defaultId = 0;
+let TASKID = Number(localStorage.getItem('currentTaskId')) || defaultId;
 
 class Task {
     constructor(projectId, taskId, title, details, priority, dueDate) {
@@ -172,6 +173,7 @@ const processNewTask = (e) => {
         defaultProjects[currentProject].taskList.push(newTask);
         idCounter++;
 
+        saveLocalStorage();
         addTask(taskId, title.value, details.value, priority.value, date);
         hideErrorMessage();
         hideTaskForm();
