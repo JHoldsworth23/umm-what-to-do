@@ -33,11 +33,11 @@ const createProjectsDiv = () => {
     const sidebar = document.querySelector('.left-panel');
     const homeProjects = document.createElement('div');
     homeProjects.classList.add('home');
-    homeProjects.innerHTML = '<h2>Home</h2>'
+    homeProjects.innerHTML = '<h2>Home</h2><hr>'
 
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('projects');
-    projectDiv.innerHTML = '<h2>Projects</h2>';
+    projectDiv.innerHTML = '<h2>Projects</h2><hr>';
 
     const homePanels = [
         {id: 'all-tasks', html: '<i class="fa-solid fa-list-ul"></i><p>All Tasks</p>'},
