@@ -31,12 +31,31 @@ header {
     padding: 0 20px;
 }
 
+.home h2, .projects h2 {
+    font-size: 1.6rem;
+    letter-spacing: 1.4px;
+    margin: 20px 12px 8px;
+}
+
 .panel {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 16px;
+    margin-top: 4px;
     padding: 0 20px;
+    cursor: pointer;
+}
+
+.panel:hover, .selected {
+    background-color: #F4D35E;
+    color: #111111;
+    border-radius: 20px;
+}
+
+.panel > p {
+    font-size: 1.25rem;
+    margin: 10px 0;
 }
 
 /* TASKS SECTION */
