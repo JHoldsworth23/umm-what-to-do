@@ -185,6 +185,7 @@ i[class*="trash"]:hover {
 .project-title {
     font-size: 2.4rem;
     margin: 20px 40px 12px;
+    text-transform: capitalize;
 }
 
 .task {
@@ -204,6 +205,47 @@ i[class*="trash"]:hover {
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
+}
+
+.task-left-div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.task-text {
+    margin: 0 auto 0 20px;
+}
+
+.task p {
+    margin: 12px 0;
+}
+
+input[type="checkbox"] + p {
+    color: #FEFEFE;
+    font-size: 1rem;
+    padding: 0 6px;
+    border-radius: 12px;
+}
+
+.low {
+    text-transform: capitalize;
+    background-color: #2C562D;
+    border: 3px solid #2C562D;
+}
+
+.medium {
+    text-transform: capitalize;
+    background-color: #FD6A02;
+    border: 3px solid #FD6A02;
+}
+
+.high {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #FF0800;
+    border: 3px solid #FF0800;
 }
 
 /* FOOTER */
@@ -228,8 +270,7 @@ i[class*="github"]:hover {
     color: #F4D35E;
 }
 
-
-/* COLOUR PALETTE 
+/* COLOUR PALETTE  
 HEADER - #191A20 OR #111111
 SIDEBAR COLOUR - #272838
 PANEL SELECTED - #F3DE8A OR #F4D35E
