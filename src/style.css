@@ -258,6 +258,15 @@ input[type="checkbox"] + p {
     border-radius: 12px;
 }
 
+.strike-through {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+}
+
+.completed {
+    opacity: 0.6;
+}
+
 .low {
     text-transform: capitalize;
     background-color: #2C562D;
@@ -275,6 +284,10 @@ input[type="checkbox"] + p {
     text-transform: uppercase;
     background-color: #FF0800;
     border: 3px solid #FF0800;
+}
+
+.task-description {
+    font-size: 1rem;
 }
 
 /* FOOTER */
