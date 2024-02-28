@@ -12,7 +12,7 @@ body {
     grid-template: 1fr 7fr 0.6fr / 1fr 5fr;
 }
 
-.hidden {
+.hidden, .panel.hidden {
     display: none;
 }
 
@@ -79,6 +79,7 @@ hr {
     font-size: 0.8rem;
     border: none;
     border-radius: 16px;
+    cursor: pointer;
 }
 
 #add-new-project:hover {
@@ -92,10 +93,15 @@ hr {
 }
 
 .project-inputs > input {
-    border: 2px solid #111111;
     width: 200px;
     font-size: 1rem;
     margin: 6px 0;
+    padding: 0 4px;
+}
+
+.project-inputs > input:focus {
+    border: 2px solid #111111;
+    border-radius: 8px;
 }
 
 .error-message {
@@ -107,7 +113,7 @@ hr {
     margin: 0 0 4px;
 }
 
-.submit-btn, .cancel-btn {
+.submit-btn, .cancel-btn, .rename-btn, .cancel-rename {
     font-size: 0.9rem;
     border: 2px solid #272838;
     border-radius: 10px;
@@ -116,12 +122,12 @@ hr {
     cursor: pointer;
 }
 
-.submit-btn:hover {
+.submit-btn:hover, .rename-btn:hover {
     background-color: #228B22;
     color: #FEFEFE;
 }
 
-.cancel-btn:hover {
+.cancel-btn:hover, .cancel-rename:hover {
     background-color: #FF0800;
     color: #FEFEFE;
 }
@@ -141,6 +147,34 @@ i[class*="pen"]:hover {
 
 i[class*="trash"]:hover {
     color: #FF0800;
+}
+
+#rename-project-form > div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 20px;
+    margin: 6px 0;
+}
+
+#rename-project-form > div:first-child {
+    justify-content: flex-start;
+    gap: 12px;
+    background-color: #F4D35E;
+    color: #111111;
+    padding: 12px 20px;
+    border-radius: 20px;
+}
+
+#rename-project {
+    width: 200px;
+    font-size: 1rem;
+    padding: 0 4px;
+}
+
+#rename-project:focus {
+    border: 2px solid #111111;
+    border-radius: 8px;
 }
 
 /* TASKS SECTION */
