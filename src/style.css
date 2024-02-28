@@ -222,6 +222,35 @@ i[class*="trash"]:hover {
     margin: 12px 0;
 }
 
+input[type="checkbox"] {
+    display: grid;
+    place-content: center;
+    appearance: none;
+    background-color: #FEFEFE;
+    color: #228B22;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #111111;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 22px 22px #228B22;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
 input[type="checkbox"] + p {
     color: #FEFEFE;
     font-size: 1rem;
