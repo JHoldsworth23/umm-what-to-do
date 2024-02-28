@@ -75,7 +75,7 @@ hr {
     position: absolute;
     transform: translateX(40%);
     padding: 4px 16px;
-    margin: 6px 0 0;
+    margin: 10px 0 0;
     font-size: 0.8rem;
     border: none;
     border-radius: 16px;
@@ -105,7 +105,7 @@ hr {
 }
 
 .error-message {
-    color: #FF0800;
+    color: #FFCECC;
     text-transform: uppercase;
     font-size: 0.8rem;
     font-weight: bold;
@@ -204,7 +204,7 @@ i[class*="github"]:hover {
     color: #F4D35E;
 }
 
-/* COLOUR PALETTE
+/* COLOUR PALETTE 
 HEADER - #191A20 OR #111111
 SIDEBAR COLOUR - #272838
 PANEL SELECTED - #F3DE8A OR #F4D35E
