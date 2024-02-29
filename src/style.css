@@ -42,6 +42,7 @@ header {
 }
 
 hr {
+    width: 100%;
     border-top: 0.5px solid #FEFEFE;
     margin-top: -10px;
 }
@@ -68,14 +69,13 @@ hr {
 }
 
 .projects {
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #add-new-project {
-    position: absolute;
-    transform: translateX(40%);
     padding: 4px 16px;
-    margin: 10px 0 0;
+    margin: 10px auto 0;
     font-size: 0.8rem;
     border: none;
     border-radius: 16px;
@@ -92,8 +92,8 @@ hr {
 }
 
 .project-inputs > input {
-    width: 200px;
-    font-size: 1rem;
+    width: 180px;
+    font-size: 0.85rem;
     margin: 6px 0;
     padding: 0 4px;
 }
@@ -113,7 +113,7 @@ hr {
 }
 
 .submit-btn, .cancel-btn, .rename-btn, .cancel-rename {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     border: 2px solid #272838;
     border-radius: 10px;
     padding: 2px 8px;
@@ -166,7 +166,7 @@ i[class*="trash"]:hover {
 }
 
 #rename-project {
-    width: 200px;
+    width: 120px;
     font-size: 1rem;
     padding: 0 4px;
 }
@@ -178,6 +178,8 @@ i[class*="trash"]:hover {
 
 /* TASKS SECTION */
 .right-panel {
+    display: flex;
+    flex-direction: column;
     background-color: #B4B4B4;
 }
 
@@ -309,6 +311,20 @@ input[type="checkbox"] + p {
 
 .date {
     width: 140px;
+}
+
+#add-new-task {
+    font-size: 0.9rem;
+    padding: 4px 16px;
+    border: none;
+    border-radius: 16px;
+    margin: 8px auto;
+    cursor: pointer;
+}
+
+#add-new-task:hover {
+    background-color: #587B7F;
+    color: #FEFEFE;
 }
 
 /* FOOTER */
