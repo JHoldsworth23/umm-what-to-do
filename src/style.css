@@ -75,7 +75,7 @@ hr {
 
 #add-new-project {
     padding: 4px 16px;
-    margin: 10px auto 0;
+    margin: 10px auto 4px;
     font-size: 0.8rem;
     border: none;
     border-radius: 16px;
@@ -314,6 +314,14 @@ input[type="checkbox"] + p {
 
 .date {
     width: 140px;
+    border: 2px solid #587B7F;
+}
+
+.overdue {
+    text-align: center;
+    padding: 0 4px;
+    border: 2px solid #FF0800;
+    border-radius: 8px;
 }
 
 #add-new-task {
