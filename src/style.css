@@ -210,7 +210,6 @@ i[class*="trash"]:hover {
 }
 
 .task-text {
-    width: 100%;
     letter-spacing: 0.75px;
     margin: 0 auto 0 0;
 }
@@ -261,6 +260,7 @@ input[type="checkbox"] + p {
     font-size: 1rem;
     padding: 0 6px;
     border-radius: 12px;
+    margin: 12px 0;
 }
 
 .strike-through {
@@ -296,7 +296,7 @@ input[type="checkbox"] + p {
 }
 
 .details {
-    width: 150px;
+    min-width: 150px;
     padding: 4px 0;
     font-size: 0.8rem;
     border: none;
@@ -313,12 +313,14 @@ input[type="checkbox"] + p {
 }
 
 .date {
-    width: 140px;
     border: 2px solid #587B7F;
+    margin: 4px 0;
 }
 
 .overdue {
     text-align: center;
+    text-transform: uppercase;
+    background-color: #FF0800;
     padding: 0 4px;
     border: 2px solid #FF0800;
     border-radius: 8px;
