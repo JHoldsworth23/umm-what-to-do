@@ -112,21 +112,21 @@ hr {
     margin: 0 0 4px;
 }
 
-.submit-btn, .cancel-btn, .rename-btn, .cancel-rename {
+input[class*="btn"], input[class*="rename"] {
     font-size: 0.85rem;
-    border: 2px solid #272838;
+    border: none;
     border-radius: 10px;
     padding: 2px 8px;
     margin: 0 4px;
     cursor: pointer;
 }
 
-.submit-btn:hover, .rename-btn:hover {
+input[class*="btn"]:hover {
     background-color: #228B22;
     color: #FEFEFE;
 }
 
-.cancel-btn:hover, .cancel-rename:hover {
+input[class*="cancel"]:hover {
     background-color: #FF0800;
     color: #FEFEFE;
 }
@@ -171,9 +171,10 @@ i[class*="trash"]:hover {
     padding: 0 4px;
 }
 
-#rename-project:focus {
+#rename-project:focus, label + input:not([type="radio"]):focus, label + textarea:focus {
     border: 2px solid #111111;
     border-radius: 8px;
+    padding: 2px 4px;
 }
 
 /* TASKS SECTION */
@@ -208,19 +209,21 @@ i[class*="trash"]:hover {
     gap: 20px;
 }
 
-.task-left-div > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-}
-
 .task-text {
     width: 100%;
+    letter-spacing: 0.75px;
     margin: 0 auto 0 0;
 }
 
-.task p {
+.task-title {
+    margin: auto 0 0;
+}
+
+.task-description {
+    margin: 2px 0 6px;
+}
+
+.task > input + p {
     margin: 12px 0;
 }
 
@@ -325,6 +328,70 @@ input[type="checkbox"] + p {
 #add-new-task:hover {
     background-color: #587B7F;
     color: #FEFEFE;
+}
+
+#task-form {
+    background-color: #587B7F;
+    color: #FEFEFE;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 2px solid #111111;
+    border-radius: 16px;
+    margin: 0 auto;
+}
+
+#task-form .error-message {
+    font-size: 0.75rem;
+    color: #500200;
+    margin-left: 6px;
+}
+
+.form-task-input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto 6px;
+}
+
+.form-task-input > label {
+    font-size: 1.125rem;
+    margin-right: 6px;
+}
+
+.form-task-input:nth-child(3) {
+    align-items: center;
+    gap: 4px;
+}
+
+.task-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+input[type='radio'] {
+    display: inline-grid;
+    place-items: center;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid #FEFEFE;
+    border-radius: 50%;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+  
+input[type='radio']:before {
+    content: '';
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+}
+  
+input[type='radio']:checked:before {
+    background: #FEFEFE;
 }
 
 /* FOOTER */
