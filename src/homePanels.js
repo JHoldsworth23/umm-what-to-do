@@ -21,7 +21,7 @@ const displayAllTasks = () => {
     clearList();
     personalProjects.forEach(project => {
         project.taskList.forEach(task => {
-            addTask(task.id, task.title, task.details, task.priority, task.dueDate);
+            addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
         });
     });
 }
@@ -32,7 +32,7 @@ const displayTodayTasks = () => {
     personalProjects.forEach(project => {
         project.taskList.forEach(task => {
             if (findFormattedDate(task.dueDate) === today) {
-                addTask(task.id, task.title, task.details, task.priority, task.dueDate);
+                addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
             } else {
                 return;
             }
@@ -46,7 +46,7 @@ const displayWeekTasks = () => {
         project.taskList.forEach(task => {
             const date = findFormattedDate(task.dueDate);
             if (checkNextWeek(date)) {
-                addTask(task.id, task.title, task.details, task.priority, task.dueDate);
+                addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
             } else {
                 return;
             }
@@ -66,7 +66,7 @@ const displayOverdueTasks = () => {
         project.taskList.forEach(task => {
             const deadline = task.dueDate;
             if (deadline.includes('overdue')) {
-                addTask(task.id, task.title, task.details, task.priority, task.dueDate);
+                addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
             } else {
                 return;
             }
@@ -80,7 +80,7 @@ const displayImportantTasks = () => {
         project.taskList.forEach(task => {
             const status = task.priority;
             if (status === 'high') {
-                addTask(task.id, task.title, task.details, task.priority, task.dueDate);
+                addTask(task.id, task.title, task.details, task.priority, task.dueDate, task.completed);
             } else {
                 return;
             }
