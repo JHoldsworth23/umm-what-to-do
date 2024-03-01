@@ -7,7 +7,7 @@ body {
 }
 
 #content {
-    max-height: 100vh;
+    height: 100vh;
     display: grid;
     grid-template: 1fr 7fr 0.6fr / 1fr 5fr;
 }
@@ -22,10 +22,24 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 32px;
     font-family: 'Yanone Kaffeestaz', sans-serif;
     text-transform: uppercase;
     background-color: #111111;
     color: #FEFEFE;
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+    background-image: url('../clipart2708970.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.no-task {
+    font-size: 1.75rem;
+    text-align: center;
 }
 
 /* HOME AND PROJECT SECTION */
@@ -75,7 +89,7 @@ hr {
 
 #add-new-project {
     padding: 4px 16px;
-    margin: 10px auto 4px;
+    margin: 10px auto 8px;
     font-size: 0.8rem;
     border: none;
     border-radius: 16px;
@@ -205,6 +219,24 @@ i[class*="trash"]:hover {
 .todo-list {
     max-height: 66vh;
     overflow: auto;
+}
+
+.todo-list::-webkit-scrollbar {
+    width: 16px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background: #F1F1F1;
+    border-radius: 16px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: #587B7F;
+    border-radius: 16px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+    background: #272838;
 }
 
 .task {
