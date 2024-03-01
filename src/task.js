@@ -35,7 +35,7 @@ const displayTask = (currentProject) => {
     });
 }
 
-const addTask = (taskId, taskTitle, details, priority, dueDate) => {
+const addTask = (taskId, taskTitle, details, priority, dueDate, taskCompleted) => {
     const todoDiv = document.querySelector('.todo-list');
 
     const taskDiv = document.createElement('div');
@@ -93,6 +93,13 @@ const addTask = (taskId, taskTitle, details, priority, dueDate) => {
     taskBtns.appendChild(deleteIcon);
 
     editTaskEvents(checkbox, taskBtns, editIcon, deleteIcon);
+
+    if (taskCompleted) {
+        taskDiv.classList.toggle('completed');
+        textDiv.classList.toggle('strike-through');
+        checkbox.classList.toggle('checked');
+        checkbox.checked = true;
+    }
 
     taskDiv.appendChild(taskLeftDiv);
     taskDiv.appendChild(taskBtns);
@@ -174,7 +181,7 @@ const processNewTask = (e) => {
         TASKID++;
 
         saveLocalStorage();
-        addTask(taskId, title.value, details.value, priority.value, date);
+        addTask(taskId, title.value, details.value, priority.value, date, false);
         hideErrorMessage();
         hideTaskForm();
     } else {
