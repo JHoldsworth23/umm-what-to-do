@@ -7,7 +7,7 @@ body {
 }
 
 #content {
-    height: 100vh;
+    max-height: 100vh;
     display: grid;
     grid-template: 1fr 7fr 0.6fr / 1fr 5fr;
 }
@@ -202,6 +202,11 @@ i[class*="trash"]:hover {
     text-transform: capitalize;
 }
 
+.todo-list {
+    max-height: 66vh;
+    overflow: auto;
+}
+
 .task {
     display: flex;
     justify-content: space-between;
@@ -339,11 +344,11 @@ input[type="checkbox"] + p {
 }
 
 #add-new-task {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     padding: 4px 16px;
     border: none;
     border-radius: 16px;
-    margin: 8px auto;
+    margin: 16px auto;
     cursor: pointer;
 }
 
@@ -459,6 +464,10 @@ input[type='radio']:checked:before {
     height: 0.4rem;
 }
 
+.edit-task-form-buttons {
+    margin-left: 18px;
+}
+
 #description, #edit-description {
     resize: none;
 }
@@ -475,6 +484,7 @@ input[type='radio']:checked:before {
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.6px;
+    padding: 2px 4px;
     margin-top: 4px;
 }
 
