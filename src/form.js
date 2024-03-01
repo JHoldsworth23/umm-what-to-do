@@ -66,7 +66,7 @@ const createTaskForm = () => {
             <span class="error-message hidden">You need to add the deadline date!</span>
         </div>
         <div class="task-form-buttons">
-            <input type="submit" class="task-submit-btn" value="Add">
+            <input type="submit" class="task-submit-btn" value="Add New Task">
             <input type="button" class="task-cancel-btn" value="Cancel">
         </div>
     `;
