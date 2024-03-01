@@ -56,7 +56,7 @@ const editTaskForm = () => {
         <div class="edit-form-task-input">
             <label for="edit-task-title">New Task Title:</label>
             <input type="text" id="edit-task-title" maxlength="25">
-            <p class="blank-error hidden">You can't make the task title blank</p>
+            <span class="blank-error hidden">You can't leave the blank task title</span>
         </div>
         <div class="edit-form-task-input">
             <label for="edit-description">New Details (Optional):</label>
