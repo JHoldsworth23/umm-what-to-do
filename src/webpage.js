@@ -23,9 +23,12 @@ const createMainComponent = () => {
 const createHeader = () => {
     const header = document.querySelector('header');
     const title = document.createElement('h1');
+    const logo = document.createElement('div');
+    logo.classList.add('logo');
 
     title.textContent = 'Umm What To Do?';
 
+    header.appendChild(logo);
     header.appendChild(title);
 }
 
