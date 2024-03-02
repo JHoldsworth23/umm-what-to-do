@@ -32,7 +32,7 @@ header {
 .logo {
     height: 70px;
     width: 70px;
-    background-image: url('../clipart2708970.png');
+    background-image: url('./brain-logo.png');
     background-size: cover;
     background-position: center;
 }
