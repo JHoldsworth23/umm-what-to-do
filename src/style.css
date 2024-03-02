@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital@0;1&family=Yanone+Kaffeesatz&display=swap');
 
-/* GRID LAYOUT */
+:root {
+    --black-color: #111111;
+    --whitesmoke-color: #FEFEFE;
+    --yellow-bg-color: #F4D35E;
+    --error-color: #FF0800;
+}
+
 body {
     font-family: 'Jost', sans-serif;
     margin: 0;
@@ -16,7 +22,6 @@ body {
     display: none !important;
 }
 
-/* HEADER */
 header { 
     grid-column: 1 / 3;
     display: flex;
@@ -25,8 +30,8 @@ header {
     gap: 32px;
     font-family: 'Yanone Kaffeestaz', sans-serif;
     text-transform: uppercase;
-    background-color: #111111;
-    color: #FEFEFE;
+    background-color: var(--black-color);
+    color: var(--whitesmoke-color);
 }
 
 .logo {
@@ -42,10 +47,9 @@ header {
     text-align: center;
 }
 
-/* HOME AND PROJECT SECTION */
 .left-panel {
     background-color: #272838;
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
     padding: 0 20px;
 }
 
@@ -57,7 +61,7 @@ header {
 
 hr {
     width: 100%;
-    border-top: 0.5px solid #FEFEFE;
+    border-top: 0.5px solid var(--whitesmoke-color);
     margin-top: -10px;
 }
 
@@ -72,8 +76,8 @@ hr {
 }
 
 .panel:hover, .selected {
-    background-color: #F4D35E;
-    color: #111111;
+    background-color: var(--yellow-bg-color);
+    color: var(--black-color);
     border-radius: 20px;
 }
 
@@ -97,7 +101,7 @@ hr {
 }
 
 #add-new-project:hover {
-    background-color: #F4D35E;
+    background-color: var(--yellow-bg-color);
 }
 
 .project-inputs {
@@ -113,13 +117,13 @@ hr {
 }
 
 .project-inputs > input:focus {
-    border: 2px solid #111111;
+    border: 2px solid var(--black-color);
     border-radius: 8px;
 }
 
 .error-message {
-    color: #FEFEFE;
-    background-color: #FF0800;
+    color: var(--whitesmoke-color);
+    background-color: var(--error-color);
     text-transform: uppercase;
     font-size: 0.8rem;
     font-weight: bold;
@@ -139,12 +143,12 @@ input[class*="btn"], input[class*="rename"] {
 
 input[class*="btn"]:hover {
     background-color: #228B22;
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
 }
 
 input[class*="cancel"]:hover {
-    background-color: #FF0800;
-    color: #FEFEFE;
+    background-color: var(--error-color);
+    color: var(--whitesmoke-color);
 }
 
 .edit-project {
@@ -161,7 +165,7 @@ i[class*="pen"]:hover {
 }
 
 i[class*="trash"]:hover {
-    color: #FF0800;
+    color: var(--error-color);
 }
 
 #rename-project-form > div {
@@ -176,8 +180,8 @@ i[class*="trash"]:hover {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 12px;
-    background-color: #F4D35E;
-    color: #111111;
+    background-color: var(--yellow-bg-color);
+    color: var(--black-color);
     padding: 12px 20px;
     border-radius: 20px;
 }
@@ -189,21 +193,20 @@ i[class*="trash"]:hover {
 }
 
 #rename-project:focus, label + input:not([type="radio"]):focus, label + textarea:focus {
-    border: 2px solid #111111;
+    border: 2px solid var(--black-color);
     border-radius: 8px;
     padding: 2px 4px;
 }
 
 .rename-error {
     text-align: center;
-    color: #FF0800;
+    color: var(--error-color);
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.6px;
     margin: 0;
 }
 
-/* TASKS SECTION */
 .right-panel {
     display: flex;
     flex-direction: column;
@@ -245,7 +248,7 @@ i[class*="trash"]:hover {
     align-items: center;
     font-size: 1.2rem;
     background-color: #587B7F;
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
     padding: 0 40px;
     border-radius: 20px;
     margin: 0 100px 8px;
@@ -279,11 +282,11 @@ input[type="checkbox"] {
     display: grid;
     place-content: center;
     appearance: none;
-    background-color: #FEFEFE;
+    background-color: var(--whitesmoke-color);
     color: #228B22;
     width: 20px;
     height: 20px;
-    border: 2px solid #111111;
+    border: 2px solid var(--black-color);
     border-radius: 6px;
     cursor: pointer;
 }
@@ -305,7 +308,7 @@ input[type="checkbox"]:checked::before {
 }
 
 input[type="checkbox"] + p {
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
     font-size: 1rem;
     padding: 0 6px;
     border-radius: 12px;
@@ -336,8 +339,8 @@ input[type="checkbox"] + p {
 .high {
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #FF0800;
-    border: 3px solid #FF0800;
+    background-color: var(--error-color);
+    border: 3px solid var(--error-color);
 }
 
 .task-description {
@@ -353,8 +356,8 @@ input[type="checkbox"] + p {
 }
 
 .details:hover {
-    background-color: #F4D35E;
-    border: 2px solid #111111;
+    background-color: var(--yellow-bg-color);
+    border: 2px solid var(--black-color);
 }
 
 .details, .task-icon {
@@ -369,9 +372,9 @@ input[type="checkbox"] + p {
 .overdue {
     text-align: center;
     text-transform: uppercase;
-    background-color: #FF0800;
+    background-color: var(--error-color);
     padding: 0 4px;
-    border: 2px solid #FF0800;
+    border: 2px solid var(--error-color);
     border-radius: 8px;
 }
 
@@ -386,24 +389,24 @@ input[type="checkbox"] + p {
 
 #add-new-task:hover {
     background-color: #587B7F;
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
 }
 
 #task-form {
     background-color: #587B7F;
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
     font-size: 1.1rem;
     font-weight: 500;
     padding: 8px 16px;
-    border: 2px solid #111111;
+    border: 2px solid var(--black-color);
     border-radius: 16px;
     margin: 0 auto;
 }
 
 #task-form .error-message {
     font-size: 0.75rem;
-    color: #FEFEFE;
-    background-color: #FF0800;
+    color: var(--whitesmoke-color);
+    background-color: var(--error-color);
     padding: 2px 4px;
     margin-left: 6px;
 }
@@ -437,7 +440,7 @@ input[type='radio'] {
     -webkit-appearance: none;
     width: 1.125rem;
     height: 1.125rem;
-    border: 2px solid #FEFEFE;
+    border: 2px solid var(--whitesmoke-color);
     border-radius: 50%;
     outline: none;
     transition: all 0.3s ease-in-out;
@@ -452,7 +455,7 @@ input[type='radio']:before {
 }
   
 input[type='radio']:checked:before {
-    background: #FEFEFE;
+    background: var(--whitesmoke-color);
 }
 
 #edit-task-form {
@@ -460,11 +463,11 @@ input[type='radio']:checked:before {
     justify-content: flex-start;
     align-items: center;
     background-color: #587B7F;
-    color: #FEFEFE;
+    color: var(--whitesmoke-color);
     font-size: 0.9rem;
     font-weight: 500;
     padding: 8px 16px;
-    border: 2px solid #111111;
+    border: 2px solid var(--black-color);
     border-radius: 16px;
     margin: 0 100px 8px;
 }
@@ -509,8 +512,8 @@ input[type='radio']:checked:before {
 }
 
 .blank-error {
-    color: #FEFEFE;
-    background-color: #FF0800;
+    color: var(--whitesmoke-color);
+    background-color: var(--error-color);
     text-align: center;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -520,7 +523,6 @@ input[type='radio']:checked:before {
     margin-top: 4px;
 }
 
-/* FOOTER */
 footer {
     grid-column: 1 / 3;
     display: flex;
@@ -529,8 +531,8 @@ footer {
     gap: 12px;
     font-size: 1.2rem;
     letter-spacing: 1px;
-    background-color: #111111;
-    color: #FEFEFE;
+    background-color: var(--black-color);
+    color: var(--whitesmoke-color);
 }
 
 i[class*="github"] {
@@ -539,14 +541,5 @@ i[class*="github"] {
 }
 
 i[class*="github"]:hover {
-    color: #F4D35E;
+    color: var(--yellow-bg-color);
 }
-
-/* COLOUR PALETTE  
-HEADER - #191A20 OR #111111
-SIDEBAR COLOUR - #272838
-PANEL SELECTED - #F3DE8A OR #F4D35E
-TASK SECTION BG - LIGHT GRAY
-TASK PANEL - #587B7F OR #7E7F9A OR #28AFB0
-FOOTER - #191A20 OR #111111
-*/
