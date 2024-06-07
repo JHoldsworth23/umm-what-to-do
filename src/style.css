@@ -37,7 +37,7 @@ header {
 .logo {
     height: 70px;
     width: 70px;
-    background-image: url('./brain-logo.png');
+    background-image: url('./image/brain-logo.png');
     background-size: cover;
     background-position: center;
 }
